@@ -43,7 +43,6 @@ class Layl extends Component {
       }
     }
     )
-    
   }
   getTimes(date) {
     jsonp(
@@ -61,8 +60,9 @@ class Layl extends Component {
   }
   componentDidMount() {
     this.getLocation()
+    }
+  componentDidUpdate() {
     this.getTimes(format(this.state.today, "DD-MM-YYYY"))
-    console.log(this.state.tomorrow)
     this.getTimes(format(this.state.tomorrow, "DD-MM-YYYY"))
   }
   render() {
