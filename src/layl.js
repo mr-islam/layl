@@ -24,6 +24,8 @@ class Layl extends Component {
       times: "",
       today: new Date(),
       tomorrow: addDays(new Date(), 1),
+      fajr: null,
+      maghrib: null,
     }
     this.getLocation = this.getLocation.bind(this)
     this.getTimes = this.getTimes.bind(this)
@@ -52,18 +54,26 @@ class Layl extends Component {
         if (err) {
           console.error(err.message)
         } else {
-        console.log(`getTimes location: `+data.city)
-        console.log(data.items[0])
+          console.log(`getTimes location: `+data.city)
+          console.log(data.items[0])
+          
+            console.log('l')
+           }
+        this.setState({
+          maghrib: data.items[0].maghrib,
+          fajr: data.items[0].fajr
+        })
         }
-      }
     )
   }
   componentDidMount() {
     this.getLocation()
     }
-  componentDidUpdate() {
-    this.getTimes(format(this.state.today, "DD-MM-YYYY"))
-    this.getTimes(format(this.state.tomorrow, "DD-MM-YYYY"))
+  componentDidUpdate(previousProps, previousState) {
+    if (previousState.fajr == null) {
+      this.getTimes(format(this.state.today, "DD-MM-YYYY"))
+      this.getTimes(format(this.state.tomorrow, "DD-MM-YYYY"))
+    }
   }
   render() {
     return (
