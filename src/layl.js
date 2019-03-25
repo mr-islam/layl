@@ -36,7 +36,7 @@ class Layl extends Component {
       if (err) {
         console.error(err.message)
       } else {
-        console.log(data.city)
+        console.log(`getLocation location: `+data.city)
         this.setState({
           city: data.city
         })
@@ -52,7 +52,7 @@ class Layl extends Component {
         if (err) {
           console.error(err.message)
         } else {
-        console.log(data.city)
+        console.log(`getTimes location: `+data.city)
         console.log(data.items[0])
         }
       }
