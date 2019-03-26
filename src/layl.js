@@ -18,7 +18,7 @@ class Layl extends Component {
     this.state = {
       city: "",
       times: "",
-      today: new Date(),
+      today: new Date(), //TODO: question: set date like this, or set by API return data?
       tomorrow: addDays(new Date(), 1),
       fajr: null,
       maghrib: null,
@@ -42,31 +42,36 @@ class Layl extends Component {
     }
     )
   }
-  getTimes(date) {
+  getTimes() {
     jsonp(
-      `http://muslimsalat.com/${this.state.city}/daily/${date}.json?key=1f3f533bb4b16343e373be5de3601247s`,
+      `http://muslimsalat.com/${this.state.city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s`,
       null,
       (err, data) => {
         if (err) {
           console.error(err.message)
         } else {
           console.log(`getTimes location: `+data.city)
-          console.log(data.items[0])
-          console.log('l')
+          console.log(data.items[1].fajr)
         }
-        let maghrib = data.items[0].maghrib
-        let fajr = data.items[1].fajr
+        let today = data.items[0].date_for
+        let tomorrow = data.items[1].date_for
+        let maghrib = parse(`${today} ${data.items[0].maghrib}`)
+        let fajr = parse(`${tomorrow} ${data.items[1].fajr}`)
+        
+        let interval = differenceInMilliseconds(fajr, maghrib) / 6
+        console.log(interval)
+        let times = []
+        for (let i = 0; i < 7; i++) {
+          times.push(addMilliseconds((maghrib, interval), i*interval))
+        }
+        console.log(times)
         this.setState({
           maghrib,
           fajr,
+          today,
+          tomorrow,
+          times: format(times[3], "HH:mm aa")
         })
-        let interval = differenceInMilliseconds(maghrib, fajr) / 6
-        console.log(interval)
-        // let times = []
-        // for (let i = 0; i < 7; i++) {
-        //   times.push(addMilliseconds((this.state.maghrib), i*interval))
-        // }
-        // console.log(times)
       }
     )
   }
@@ -75,8 +80,9 @@ class Layl extends Component {
     }
   componentDidUpdate() {
     if (this.state.maghrib === null) {
-      this.getTimes(format(this.state.today, "DD-MM-YYYY"))
-      this.getTimes(format(this.state.tomorrow, "DD-MM-YYYY"))
+      this.getTimes()
+    } else if (this.state.maghrib !== null) {
+      console.log('yay')
     }
   }
   render() {
