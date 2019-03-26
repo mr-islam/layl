@@ -64,8 +64,8 @@ class Layl extends Component {
   componentDidMount() {
     this.getLocation()
     }
-  componentDidUpdate(previousProps, previousState) {
-    if (previousState.maghrib == null) {
+  componentDidUpdate() {
+    if (this.state.maghrib === null) {
       this.getTimes(format(this.state.today, "DD-MM-YYYY"))
       this.getTimes(format(this.state.tomorrow, "DD-MM-YYYY"))
     }
