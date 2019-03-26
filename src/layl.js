@@ -54,10 +54,19 @@ class Layl extends Component {
           console.log(data.items[0])
           console.log('l')
         }
+        let maghrib = data.items[0].maghrib
+        let fajr = data.items[1].fajr
         this.setState({
-          maghrib: data.items[0].maghrib,
-          fajr: data.items[0].fajr
+          maghrib,
+          fajr,
         })
+        let interval = differenceInMilliseconds(maghrib, fajr) / 6
+        console.log(interval)
+        // let times = []
+        // for (let i = 0; i < 7; i++) {
+        //   times.push(addMilliseconds((this.state.maghrib), i*interval))
+        // }
+        // console.log(times)
       }
     )
   }
