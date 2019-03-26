@@ -3,10 +3,6 @@ import jsonp from 'jsonp'
 import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } from 'date-fns';
 //import { getLocation } from './getLocation';
 
-window.API = {
-  fetch
-}
-
 function Table (props) {
   return (
     <div>
