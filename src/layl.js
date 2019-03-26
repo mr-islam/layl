@@ -52,14 +52,13 @@ class Layl extends Component {
         } else {
           console.log(`getTimes location: `+data.city)
           console.log(data.items[0])
-          
-            console.log('l')
-           }
+          console.log('l')
+        }
         this.setState({
           maghrib: data.items[0].maghrib,
           fajr: data.items[0].fajr
         })
-        }
+      }
     )
   }
   componentDidMount() {
