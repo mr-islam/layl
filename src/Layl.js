@@ -5,7 +5,7 @@ import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } fro
 function Table (props) {
   return (
     <div>
-      <p>You are in: <em>{props.city}</em></p>
+      <p>You are in: <em>{props.city}, {props.country}</em></p>
       <p>Half the night is at: <em>{props.times}</em></p>
     </div>
   )
@@ -16,6 +16,7 @@ class Layl extends Component {
     super(props)
     this.state = {
       city: "",
+      country: "",
       times: "Loading…",
       today: new Date(), //TODO: question: set date like this, or set by API return data?
       tomorrow: addDays(new Date(), 1),
@@ -55,6 +56,7 @@ class Layl extends Component {
           tomorrow,
           times: format(times[3], "hh:mm aa"),
           city: data.city,
+          country: data.country,
         })
         console.log(Object.values(times).map((time) => format(time, 'hh mm aa')))
       }
@@ -71,6 +73,7 @@ class Layl extends Component {
         <Table 
         times={this.state.times}
         city={this.state.city}
+        country={this.state.country}
         />
       </div>
     )
