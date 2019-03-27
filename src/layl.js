@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import jsonp from 'jsonp'
 import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } from 'date-fns';
-//import { getLocation } from './getLocation';
 
 function Table (props) {
   return (
@@ -57,6 +56,8 @@ class Layl extends Component {
         let tomorrow = data.items[1].date_for
         let maghrib = parse(`${today} ${data.items[0].maghrib}`)
         let fajr = parse(`${tomorrow} ${data.items[1].fajr}`)
+        console.log(maghrib)
+        console.log(fajr)
         
         let interval = differenceInMilliseconds(fajr, maghrib) / 6
         console.log(interval)
