@@ -6,8 +6,8 @@ import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } fro
 function Table (props) {
   return (
     <div>
-      <p>{props.times}</p>
-      <p>{props.city}</p>
+      <p>You are in: <em>{props.city}</em></p>
+      <p>Half the night is at: <em>{props.times}</em></p>
     </div>
   )
 }
