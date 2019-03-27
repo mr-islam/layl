@@ -62,16 +62,16 @@ class Layl extends Component {
         console.log(interval)
         let times = []
         for (let i = 0; i < 7; i++) {
-          times.push(addMilliseconds((maghrib, interval), i*interval))
+          times.push(addMilliseconds(maghrib, i*interval))
         }
-        console.log(times)
         this.setState({
           maghrib,
           fajr,
           today,
           tomorrow,
-          times: format(times[3], "HH:mm aa")
+          times: format(times[3], "hh:mm aa")
         })
+        console.log(Object.values(times).map((time) => format(time, 'hh mm aa')))
       }
     )
   }
