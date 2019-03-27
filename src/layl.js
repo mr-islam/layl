@@ -15,8 +15,8 @@ class Layl extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      city: "",
-      times: "",
+      city: "Loading…",
+      times: "Loading…",
       today: new Date(), //TODO: question: set date like this, or set by API return data?
       tomorrow: addDays(new Date(), 1),
       fajr: null,
