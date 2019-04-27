@@ -5,9 +5,9 @@ import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } fro
 function Table (props) {
   return (
     <div>
-      <p>You are in: <em>{props.city}, {props.country}</em></p>
-      <p>Half the night is at: <em>{props.first_third}</em></p>
-      <p>The last half of the night starts at: <em>{props.last_third}</em></p>
+      <p>You are in: <strong>{props.city}, {props.country}</strong></p>
+      <p>Half the night is at: <strong>{props.first_third}</strong></p>
+      <p>The last half of the night starts at: <strong>{props.last_third}</strong></p>
     </div>
   )
 }
