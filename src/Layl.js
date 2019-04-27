@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import jsonp from 'jsonp'
 import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } from 'date-fns';
+import logo from "./logo.svg"
 
 function Table (props) {
   return (
     <div>
+      <img src={logo} alt="Logo"/>
       <p>You are in: <strong>{props.city}, {props.country}</strong></p>
       <p>Half the night is at: <strong>{props.first_third}</strong></p>
       <p>The last half of the night starts at: <strong>{props.last_third}</strong></p>
