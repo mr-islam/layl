@@ -6,7 +6,8 @@ function Table (props) {
   return (
     <div>
       <p>You are in: <em>{props.city}, {props.country}</em></p>
-      <p>Half the night is at: <em>{props.times}</em></p>
+      <p>Half the night is at: <em>{props.first_third}</em></p>
+      <p>The last half of the night starts at: <em>{props.last_third}</em></p>
     </div>
   )
 }
@@ -35,8 +36,7 @@ class Layl extends Component {
         } else {
           console.log(`getTimes location: `+data.city)
           console.log(data.items[1].fajr)
-        }
-        let today = data.items[0].date_for
+          let today = data.items[0].date_for
         let tomorrow = data.items[1].date_for
         let maghrib = parse(`${today} ${data.items[0].maghrib}`)
         let fajr = parse(`${tomorrow} ${data.items[1].fajr}`)
@@ -54,11 +54,13 @@ class Layl extends Component {
           fajr,
           today,
           tomorrow,
-          times: format(times[3], "hh:mm aa"),
+          first_third: format(times[3], "hh:mm aa"),
+          last_third: format(times[4], "hh:mm aa"),
           city: data.city,
           country: data.country,
         })
         console.log(Object.values(times).map((time) => format(time, 'hh mm aa')))
+        }
       }
     )
   }
@@ -71,7 +73,8 @@ class Layl extends Component {
     return (
       <div>
         <Table 
-        times={this.state.times}
+        first_third={this.state.first_third}
+        last_third={this.state.last_third}
         city={this.state.city}
         country={this.state.country}
         />
