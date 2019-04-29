@@ -3,7 +3,10 @@ import React, { Component } from 'react';
 import fetchJsonp from 'fetch-jsonp';
 //import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } from 'date-fns';
 import dayjs from 'dayjs';
-import logo from "./logo.svg"
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import logo from "./logo.svg";
+dayjs.extend(customParseFormat)
+
 
 function Table (props) {
   return (
@@ -47,8 +50,8 @@ class Layl extends Component {
             console.log(json.items[1].fajr)
             let today = json.items[0].date_for
             let tomorrow = json.items[1].date_for
-            let maghrib = dayjs(`${today} ${json.items[0].maghrib}`)
-            let fajr = dayjs(`${tomorrow} ${json.items[1].fajr}`)
+            let maghrib = dayjs(`${today} ${json.items[0].maghrib}`, "YYYY-MM-DD h:mm a")
+            let fajr = dayjs(`${tomorrow} ${json.items[1].fajr}`, "YYYY-MM-DD h:mm a")
             console.log(maghrib)
             console.log(fajr)
             
