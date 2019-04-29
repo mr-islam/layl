@@ -23,8 +23,8 @@ class Layl extends Component {
       city: "",
       country: "",
       times: "Loading…",
-      today: new Date(), //TODO: question: set date like this, or set by API return data?
-      tomorrow: addDays(new Date(), 1),
+      today: null, //TODO: question: set date like this, or set by API return data?
+      tomorrow: null,
       fajr: null,
       maghrib: null,
     }
