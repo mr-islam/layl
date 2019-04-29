@@ -50,8 +50,8 @@ class Layl extends Component {
             console.log(json.items[1].fajr)
             let today = json.items[0].date_for
             let tomorrow = json.items[1].date_for
-            let maghrib = dayjs(`${today} ${json.items[0].maghrib}`, "YYYY-MM-DD h:mm a")
-            let fajr = dayjs(`${tomorrow} ${json.items[1].fajr}`, "YYYY-MM-DD h:mm a")
+            let maghrib = dayjs(`${today} ${json.items[0].maghrib}`, "YYYY-M-DD h:mm a")
+            let fajr = dayjs(`${tomorrow} ${json.items[1].fajr}`, "YYYY-M-DD h:mm a")
             console.log(maghrib)
             console.log(fajr)
             
