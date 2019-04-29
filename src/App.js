@@ -30,7 +30,7 @@ class Layl extends Component {
     this.getTimes = this.getTimes.bind(this)
   }
   getTimes() {
-    fetchJsonp(`http://ip-api.com/json?fields=city`)
+    fetchJsonp(`https://extreme-ip-lookup.com/json/`)
       .then(response => {
         console.log('location: '+response)
         return response.json()
