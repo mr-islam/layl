@@ -32,10 +32,10 @@ class Layl extends Component {
   getTimes() {
     fetchJsonp(`https://extreme-ip-lookup.com/json/`)
       .then(response => {
-        console.log('location: '+response)
         return response.json()
       }).then(json => {
         let city = json.city
+        console.log('location: '+city)
         fetchJsonp(`https://muslimsalat.com/${city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s`)
           .then(response => {
             console.log(response)
