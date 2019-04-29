@@ -30,38 +30,47 @@ class Layl extends Component {
     this.getTimes = this.getTimes.bind(this)
   }
   getTimes() {
-    fetchJsonp('https://muslimsalat.com/weekly.json?key=1f3f533bb4b16343e373be5de3601247s')
+    fetchJsonp(`http://ip-api.com/json?fields=city`)
       .then(response => {
-        console.log(response)
+        console.log('location: '+response)
         return response.json()
       }).then(json => {
-        console.log('parsed json', json)
-        console.log(json.city)
-        console.log(json.items[1].fajr)
-        let today = json.items[0].date_for
-        let tomorrow = json.items[1].date_for
-        let maghrib = parse(`${today} ${json.items[0].maghrib}`)
-        let fajr = parse(`${tomorrow} ${json.items[1].fajr}`)
-        console.log(maghrib)
-        console.log(fajr)
-        
-        let interval = differenceInMilliseconds(fajr, maghrib) / 6
-        console.log(interval)
-        let times = []
-        for (let i = 0; i < 7; i++) {
-          times.push(addMilliseconds(maghrib, i*interval))
-        }
-        this.setState({
-          maghrib,
-          fajr,
-          today,
-          tomorrow,
-          first_third: format(times[3], "hh:mm aa"),
-          last_third: format(times[4], "hh:mm aa"),
-          city: json.city,
-          country: json.country,
-        })
-        console.log(Object.values(times).map((time) => format(time, 'hh mm aa')))
+        let city = json.city
+        fetchJsonp(`https://muslimsalat.com/${city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s`)
+          .then(response => {
+            console.log(response)
+            return response.json()
+          }).then(json => {
+            console.log('parsed json', json)
+            console.log(json.city)
+            console.log(json.items[1].fajr)
+            let today = json.items[0].date_for
+            let tomorrow = json.items[1].date_for
+            let maghrib = parse(`${today} ${json.items[0].maghrib}`)
+            let fajr = parse(`${tomorrow} ${json.items[1].fajr}`)
+            console.log(maghrib)
+            console.log(fajr)
+            
+            let interval = differenceInMilliseconds(fajr, maghrib) / 6
+            console.log(interval)
+            let times = []
+            for (let i = 0; i < 7; i++) {
+              times.push(addMilliseconds(maghrib, i*interval))
+            }
+            this.setState({
+              maghrib,
+              fajr,
+              today,
+              tomorrow,
+              first_third: format(times[3], "hh:mm aa"),
+              last_third: format(times[4], "hh:mm aa"),
+              city: json.city,
+              country: json.country,
+            })
+            console.log(Object.values(times).map((time) => format(time, 'hh mm aa')))
+          }).catch(ex => {
+            console.log('parsing failed', ex)
+          })
       }).catch(ex => {
         console.log('parsing failed', ex)
       })
