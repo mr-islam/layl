@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 //import jsonp from 'jsonp'
 import fetchJsonp from 'fetch-jsonp';
-import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } from 'date-fns';
+//import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } from 'date-fns';
+import dayjs from 'dayjs';
 import logo from "./logo.svg"
 
 function Table (props) {
@@ -46,28 +47,28 @@ class Layl extends Component {
             console.log(json.items[1].fajr)
             let today = json.items[0].date_for
             let tomorrow = json.items[1].date_for
-            let maghrib = parse(`${today} ${json.items[0].maghrib}`)
-            let fajr = parse(`${tomorrow} ${json.items[1].fajr}`)
+            let maghrib = dayjs(`${today} ${json.items[0].maghrib}`)
+            let fajr = dayjs(`${tomorrow} ${json.items[1].fajr}`)
             console.log(maghrib)
             console.log(fajr)
             
-            let interval = differenceInMilliseconds(fajr, maghrib) / 6
+            let interval = fajr.diff(maghrib, 'millisecond') / 6
             console.log(interval)
             let times = []
             for (let i = 0; i < 7; i++) {
-              times.push(addMilliseconds(maghrib, i*interval))
+              times.push(maghrib.add(interval * i, 'millisecond'))
             }
             this.setState({
               maghrib,
               fajr,
               today,
               tomorrow,
-              first_third: format(times[3], "hh:mm aa"),
-              last_third: format(times[4], "hh:mm aa"),
+              first_third: times[3].format('h:mm a'),
+              last_third: times[4].format('h:mm a'),
               city: json.city,
               country: json.country,
             })
-            console.log(Object.values(times).map((time) => format(time, 'hh mm aa')))
+            console.log(Object.values(times).map((time) => time.format('h:mm a')))
           }).catch(ex => {
             console.log('parsing failed', ex)
           })
