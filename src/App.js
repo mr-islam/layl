@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-//import jsonp from 'jsonp'
 import fetchJsonp from 'fetch-jsonp';
-//import { format, addDays, parse, differenceInMilliseconds, addMilliseconds } from 'date-fns';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import logo from "./logo.svg";
@@ -82,44 +80,6 @@ class Layl extends Component {
         console.log('parsing failed', ex)
       })
   }
-  // getTimes1() {
-  //   jsonp(
-  //     `https://muslimsalat.com/weekly.json?key=1f3f533bb4b16343e373be5de3601247s`,
-  //     null, //TODO: use muwaqqit API instead?
-  //     (err, data) => {
-  //       if (err) {
-  //         console.error(err.message)
-  //       } else {
-  //         console.log(`getTimes location: `+data.city)
-  //         console.log(data.items[1].fajr)
-  //         let today = data.items[0].date_for
-  //       let tomorrow = data.items[1].date_for
-  //       let maghrib = parse(`${today} ${data.items[0].maghrib}`)
-  //       let fajr = parse(`${tomorrow} ${data.items[1].fajr}`)
-  //       console.log(maghrib)
-  //       console.log(fajr)
-        
-  //       let interval = differenceInMilliseconds(fajr, maghrib) / 6
-  //       console.log(interval)
-  //       let times = []
-  //       for (let i = 0; i < 7; i++) {
-  //         times.push(addMilliseconds(maghrib, i*interval))
-  //       }
-  //       this.setState({
-  //         maghrib,
-  //         fajr,
-  //         today,
-  //         tomorrow,
-  //         first_third: format(times[3], "hh:mm aa"),
-  //         last_third: format(times[4], "hh:mm aa"),
-  //         city: data.city,
-  //         country: data.country,
-  //       })
-  //       console.log(Object.values(times).map((time) => format(time, 'hh mm aa')))
-  //       }
-  //     }
-  //   )
-  // }
   componentDidMount() {
     this.getTimes()
     }
