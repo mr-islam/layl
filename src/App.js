@@ -10,12 +10,14 @@ function Table (props) {
   return (
     <div>
       <img src={logo} alt="Logo"/>
-      <p>You are in: <strong>{props.city}, {props.country}</strong></p> {/*TODO: make a resusable component for each line */}
+      <p>The night starts at <em>Maghrib</em>: <strong>{props.maghrib}</strong></p>
       <p>Half the night is at: <strong>{props.first_third}</strong></p>
       <p>The last third of the night starts at: <strong>{props.last_third}</strong></p>
+      <p>You are in: <strong>{props.city}, {props.country}</strong></p> {/*TODO: make a resusable component for each line */}
     </div>
   )
 }
+
 
 class Layl extends Component {
   constructor(props) {
@@ -65,8 +67,9 @@ class Layl extends Component {
         for (let i = 0; i < 7; i++) {
           times.push(maghrib.add(interval * i, 'millisecond'))
         }
-          this.setState({
-          maghrib,
+        let timeFormat = "h:mm a"
+        this.setState({
+          maghrib: times[0].format(timeFormat),
           fajr,
           today,
           tomorrow,
@@ -93,6 +96,7 @@ class Layl extends Component {
         last_third={this.state.last_third}
         city={this.state.city}
         country={this.state.country}
+        maghrib={this.state.maghrib}
         />
       </div>
     )
