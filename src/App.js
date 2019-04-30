@@ -12,7 +12,7 @@ function Table (props) {
   return (
     <div>
       <img src={logo} alt="Logo"/>
-      <p>You are in: <strong>{props.city}, {props.country}</strong></p>
+      <p>You are in: <strong>{props.city}, {props.country}</strong></p> {/*TODO: make a resusable component for each line */}
       <p>Half the night is at: <strong>{props.first_third}</strong></p>
       <p>The last third of the night starts at: <strong>{props.last_third}</strong></p>
     </div>
@@ -50,8 +50,8 @@ class Layl extends Component {
             console.log(json.items[1].fajr)
             let today = json.items[0].date_for
             let tomorrow = json.items[1].date_for
-            let maghrib = dayjs(`${today} ${json.items[0].maghrib}`, "YYYY-M-DD h:mm a")
-            let fajr = dayjs(`${tomorrow} ${json.items[1].fajr}`, "YYYY-M-DD h:mm a")
+            let maghrib = dayjs(`${today} ${json.items[0].maghrib}`, "YYYY-M-D h:mm a")
+            let fajr = dayjs(`${tomorrow} ${json.items[1].fajr}`, "YYYY-M-D h:mm a")
             console.log(maghrib)
             console.log(fajr)
             
