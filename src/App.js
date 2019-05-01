@@ -10,15 +10,19 @@ function Table (props) {
   return (
     <div>
       <img src={logo} alt="Logo"/>
-      <p>The night starts at <em>Maghrib</em>: <strong>{props.maghrib}</strong></p>
-      <p>Half the night is at: <strong>{props.first_third}</strong></p>
-      <p>The last third of the night starts at: <strong>{props.last_third}</strong></p>
+      <p>The night (¹⁄6) starts at <em>Maghrib</em>: <strong>{props.maghrib}</strong></p>
+      <p>Second sixth (2⁄6) starts at: <strong>{props.twoSixth}</strong> </p>
+      <p>First third ends, second third (3⁄6) begins: <strong>{props.threeSixth}</strong></p>
+      <p>First half ends, second half (4⁄6) begins: <strong>{props.fourSixth}</strong></p>
+      <p>Second third ends, last third (5⁄6) begins: <strong>{props.fiveSixth}</strong></p>
+      <p>Last sixth (6⁄6) of the night starts at: <strong>{props.sixSixth}</strong></p>
+      <p>The night ends at <em>Fajr</em>: <strong>{props.fajr}</strong></p>
       <p>You are in: <strong>{props.city}, {props.country}</strong></p> {/*TODO: make a resusable component for each line */}
     </div>
   )
 }
 
-function Info (props) {
+function Info () {
   return (
     <div style={{width:'100vw'}}>
       <div style={{position: 'absolute',bottom:'0%', width:'100%',textAlign:'center'}}>How does this work? 👇🏼
@@ -129,14 +133,18 @@ class Layl extends Component {
         for (let i = 0; i < 7; i++) {
           times.push(maghrib.add(interval * i, 'millisecond'))
         }
+        console.log(times)
         let timeFormat = "h:mm a"
         this.setState({
-          maghrib: times[0].format(timeFormat),
-          fajr,
           today,
           tomorrow,
-          first_third: times[3].format('h:mm a'),
-          last_third: times[4].format('h:mm a'),
+          maghrib: times[0].format('h:mm a'),
+          twoSixth: times[1].format('h:mm a'),
+          threeSixth: times[2].format('h:mm a'),
+          fourSixth: times[3].format('h:mm a'),
+          fiveSixth: times[4].format('h:mm a'),
+          sixSixth: times[5].format('h:mm a'),
+          fajr: times[6].format('h:mm a'),
           city: json.city,
           country: json.country,
         })
@@ -154,11 +162,16 @@ class Layl extends Component {
     return (
       <div>
         <Table 
-        first_third={this.state.first_third}
-        last_third={this.state.last_third}
+        oneSixth={this.state.oneSixth}
+        twoSixth={this.state.twoSixth}
+        threeSixth={this.state.threeSixth}
+        fourSixth={this.state.fourSixth}
+        fiveSixth={this.state.fiveSixth}
+        sixSixth={this.state.sixSixth}
         city={this.state.city}
         country={this.state.country}
         maghrib={this.state.maghrib}
+        fajr={this.state.fajr}
         />
         <Info />
       </div>
