@@ -8,7 +8,7 @@ dayjs.extend(customParseFormat)
 
 function Table (props) {
   return (
-    <div>
+    <div style={{height:'45vh'}}>
       <img src={logo} alt="Logo"/>
       <p>The night (¹⁄6) starts at <em>Maghrib</em>: <strong>{props.maghrib}</strong></p>
       <p>Second sixth (2⁄6) starts at: <strong>{props.twoSixth}</strong> </p>
