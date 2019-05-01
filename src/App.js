@@ -20,13 +20,12 @@ function Table (props) {
 
 function Info (props) {
   return (
-    <div >
-      <div style={{position: 'absolute',bottom:'0%', left:'auto'}}>
-        <p><a>How does this work? 👇🏼</a></p>
+    <div style={{width:'100vw'}}>
+      <div style={{position: 'absolute',bottom:'0%', width:'100%',textAlign:'center'}}>How does this work? 👇🏼
       </div>
       <div style={{position: 'absolute',top:'100%', display:'flex', flexDirection:'column'}}>
-        <div style={{display:'flex', flexDirection:'row'}}>
-          <div style={{display:'flex', flexDirection:'column', textAlign:'left'}}>
+        <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
+          <div style={{display:'flex', flexDirection:'column', textAlign:'left', width:'46%', margin:'2%'}}>
             <h1>Why calculate the night?</h1>
             <p>The night is really significant for the believer, host to great times for worship and 
               prayer:</p>
@@ -46,7 +45,7 @@ function Info (props) {
               may fulfill obligations like the Isha prayer within the right time.</p>
             <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
           </div>
-          <div style={{display:'flex', flexDirection:'column'}}>
+          <div style={{display:'flex', flexDirection:'column', textAlign:'left', width:'46%', margin:'2%'}}>
             <h1>Details of calculations</h1>
             <p>The night is defined to begin at the time of Maghrib prayer, right after sunset, 
               and lasts till the start of Fajr time, which is dawn. As mentioned previously, 
