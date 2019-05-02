@@ -3,6 +3,7 @@ import fetchJsonp from 'fetch-jsonp';
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import logo from "./logo.svg";
+import adhan from "adhan"
 dayjs.extend(customParseFormat)
 
 
@@ -105,14 +106,16 @@ class Layl extends Component {
         return response.json()
       }).then(json => {
         let city = json.city
+        let lat = json.lat
+        let lon = json.lon
         console.log('location: '+city)
-        this.callApi(city)
+        this.callApi(city, lat, lon)
       }).catch(ex => {
         console.log('parsing failed', ex)
       })
   }
-  callApi(city) {
-    fetchJsonp(`https://muslimsalat.com/${city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s`)
+  callApi(city, lat, lon) {
+    fetchJsonp(``) //https://muslimsalat.com/${city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s
       .then(response => { //TODO: update timeout becuase it can be slow
         console.log(response)
         return response.json()
@@ -151,6 +154,40 @@ class Layl extends Component {
         console.log(Object.values(times).map((time) => time.format('h:mm a')))
       }).catch(ex => {
         console.log('parsing failed', ex)
+        let coordinates = new adhan.Coordinates(lat, lon)
+        let today = new Date()
+        let tomorrow = new Date()
+        tomorrow.setDate(today.getDate()+1)
+        let params = adhan.CalculationMethod.MuslimWorldLeague()
+        let prayerTimesToday = new adhan.PrayerTimes(coordinates, today, params)
+        let prayerTimesTomorrow = new adhan.PrayerTimes(coordinates, tomorrow, params)
+        console.log(prayerTimesTomorrow)
+
+        let maghrib = dayjs(prayerTimesToday.maghrib)
+        let fajr = dayjs(prayerTimesTomorrow.fajr)
+        console.log(maghrib)
+        console.log(fajr)
+        
+        let interval = fajr.diff(maghrib, 'millisecond') / 6
+        console.log(interval)
+        let times = []
+        for (let i = 0; i < 7; i++) {
+          times.push(maghrib.add(interval * i, 'millisecond'))
+        }
+        console.log(times)
+        let timeFormat = "h:mm a"
+        this.setState({
+          today,
+          tomorrow,
+          maghrib: times[0].format('h:mm a'),
+          twoSixth: times[1].format('h:mm a'),
+          threeSixth: times[2].format('h:mm a'),
+          fourSixth: times[3].format('h:mm a'),
+          fiveSixth: times[4].format('h:mm a'),
+          sixSixth: times[5].format('h:mm a'),
+          fajr: times[6].format('h:mm a'),
+          city: city,
+        })
       })
   }
   componentDidMount() {
