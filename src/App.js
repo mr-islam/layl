@@ -162,7 +162,6 @@ class Layl extends Component {
     return (
       <div>
         <Table 
-        oneSixth={this.state.oneSixth}
         twoSixth={this.state.twoSixth}
         threeSixth={this.state.threeSixth}
         fourSixth={this.state.fourSixth}
