@@ -1,5 +1,36 @@
-.App {
-  text-align: center;
+.layl-container {
+  height:100vh; 
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content: center;
+}
+.first-bottom {
+  position:absolute;
+  bottom:0%;
+  width:100%;
+  text-align:center;
+}
+.second-screen {
+  position:absolute;
+  top:100%;
+  display:flex;
+  flex-direction:column;
+}
+.text-row {
+  display:flex;
+  flex-direction:row;
+  width:100%;
+  align-items:center;
+  flex-wrap:wrap;
+}
+.text-column {
+  display:flex;
+  flex-direction:column;
+  text-align:left;
+  width:46%;
+  margin:2%;
+}
 @media all and (max-width: 800px) {
   .text-row {
     display:flex;
