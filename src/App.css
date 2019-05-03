@@ -1,3 +1,18 @@
 .App {
   text-align: center;
+@media all and (max-width: 800px) {
+  .text-row {
+    display:flex;
+    flex-direction:column;
+    width:100%;
+    align-items:center;
+    flex-wrap:wrap;
+  }
+  .text-column {
+    display:flex;
+    flex-direction:column;
+    text-align:left;
+    width:80%;
+    margin:2%;
+  }
 }

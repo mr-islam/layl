@@ -4,12 +4,13 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import logo from "./logo.svg";
 import adhan from "adhan"
+import './App.css'
 dayjs.extend(customParseFormat)
 
 
 function Table (props) {
   return (
-    <div style={{height:'45vh'}}>
+    <div className='layl-container'>
       <img src={logo} alt="Logo"/>
       <p>The night (¹⁄6) starts at <em>Maghrib</em>: <strong>{props.maghrib}</strong></p>
       <p>Second sixth (2⁄6) starts at: <strong>{props.twoSixth}</strong> </p>
@@ -26,11 +27,11 @@ function Table (props) {
 function Info () {
   return (
     <div style={{width:'100vw'}}>
-      <div style={{position: 'absolute',bottom:'0%', width:'100%',textAlign:'center'}}>How does this work? 👇🏼
-      </div>
-      <div style={{position: 'absolute',top:'100%', display:'flex', flexDirection:'column'}}>
-        <div style={{display:'flex', flexDirection:'row', width:'100%'}}>
-          <div style={{display:'flex', flexDirection:'column', textAlign:'left', width:'46%', margin:'2%'}}>
+      <div className='first-bottom' >
+        How does this work? 👇🏼</div>
+      <div className='second-screen' >
+        <div className='text-row'>
+          <div className='text-column' >
             <h1>Why calculate the night?</h1>
             <p>The night is really significant for the believer, host to great times for worship and 
               prayer:</p>
@@ -50,7 +51,7 @@ function Info () {
               may fulfill obligations like the Isha prayer within the right time.</p>
             <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
           </div>
-          <div style={{display:'flex', flexDirection:'column', textAlign:'left', width:'46%', margin:'2%'}}>
+          <div className='text-column' >
             <h1>Details of calculations</h1>
             <p>The night is defined to begin at the time of Maghrib prayer, right after sunset, 
               and lasts till the start of Fajr time, which is dawn. As mentioned previously, 
@@ -74,7 +75,6 @@ function Info () {
             <p>All these details and warnings aren’t pretty, but I think they’re part of 
               producing apps for such important purposes. May God accept our worship.</p>
           </div>
-          
       </div>
       <div style={{textAlign:'center', position:'relative', top:'200%'}}>
         <p>Made with 💗 by @mrislam_</p>
