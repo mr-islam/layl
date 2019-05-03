@@ -92,7 +92,7 @@ class Layl extends Component {
     this.state = {
       city: "",
       country: "",
-      times: "Loading…",
+      times: "Loading…",//TODO: make a loading var that is boolean, to render or not
       today: null, //TODO: question: set date like this, or set by API return data?
       tomorrow: null,
       fajr: null,
