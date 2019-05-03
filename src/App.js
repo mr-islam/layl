@@ -67,11 +67,13 @@ function Info () {
               and finds the appropriate times for your location. Note, this may be slightly 
               inaccurate depending on internet configuration or completely wrong if using a VPN. 
               Other options for determining location will be added later, by the Grace of God.</p>
-            <p>Also, although the calculation of Maghrib time is quite clear and anywhere in 
-              the world, the calculation of Fajr relies upon the chosen angle of calculation. 
-              This best angle for calculation varies from place to place, and even depends on 
-              the seasons in a given location. This app tries to automatically choose the best 
-              calculation method for your location, but it may not be the most accurate.</p>
+            <p>Also, although the calculation of Maghrib time is quite clear and simple in
+              most places, the calculation of Fajr relies upon the chosen angle of calculation. 
+              This best angle for calculation varies from place to place, which can even change vary 
+              due in each season. This app tries to automatically choose the best 
+              calculation method for your location, but it may off by some minutes—<strong>please safeguard
+              your worship by leaving ample time before or after any of the times 
+              produced by this app</strong>.</p>
             <p>All these details and warnings aren’t pretty, but I think they’re part of 
               producing apps for such important purposes. May God accept our worship.</p>
           </div>
