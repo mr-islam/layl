@@ -76,10 +76,10 @@ function Info () {
               producing apps for such important purposes. May God accept our worship.</p>
           </div>
       </div>
-      <div style={{textAlign:'center', position:'relative', top:'200%'}}>
-        <p>Made with 💗 by @mrislam_</p>
-      </div>
+        <div style={{textAlign:'center', position:'relative', top:'200%'}}>
+          <p>Made with 💗 by @mrislam_</p>
         </div>
+      </div>
     </div>
     
   )
@@ -92,7 +92,8 @@ class Layl extends Component {
     this.state = {
       city: "",
       country: "",
-      times: "Loading…",//TODO: make a loading var that is boolean, to render or not
+      loading: true,
+      times: null,//
       today: null, //TODO: question: set date like this, or set by API return data?
       tomorrow: null,
       fajr: null,
@@ -141,6 +142,7 @@ class Layl extends Component {
         this.setState({
           today,
           tomorrow,
+          loading: false,
           maghrib: times[0].format('h:mm a'),
           twoSixth: times[1].format('h:mm a'),
           threeSixth: times[2].format('h:mm a'),
@@ -179,6 +181,7 @@ class Layl extends Component {
         this.setState({
           today,
           tomorrow,
+          loading: false,
           maghrib: times[0].format('h:mm a'),
           twoSixth: times[1].format('h:mm a'),
           threeSixth: times[2].format('h:mm a'),
@@ -196,7 +199,26 @@ class Layl extends Component {
   componentDidUpdate() {
   }
   render() {
-    return (
+    if (this.state.loading) {
+      return (
+      <div>
+        <span>Loading…</span>
+        <Table 
+        twoSixth={this.state.twoSixth}
+        threeSixth={this.state.threeSixth}
+        fourSixth={this.state.fourSixth}
+        fiveSixth={this.state.fiveSixth}
+        sixSixth={this.state.sixSixth}
+        city={this.state.city}
+        country={this.state.country}
+        maghrib={this.state.maghrib}
+        fajr={this.state.fajr}
+        />
+        <Info />
+      </div>
+      )
+    } else {
+      return (
       <div>
         <Table 
         twoSixth={this.state.twoSixth}
@@ -211,7 +233,8 @@ class Layl extends Component {
         />
         <Info />
       </div>
-    )
+      )
+    }
   }
 }
 
