@@ -143,17 +143,17 @@ class Layl extends Component {
           today,
           tomorrow,
           loading: false,
-          maghrib: times[0].format('h:mm a'),
-          twoSixth: times[1].format('h:mm a'),
-          threeSixth: times[2].format('h:mm a'),
-          fourSixth: times[3].format('h:mm a'),
-          fiveSixth: times[4].format('h:mm a'),
-          sixSixth: times[5].format('h:mm a'),
-          fajr: times[6].format('h:mm a'),
+          maghrib: times[0].format(timeFormat),
+          twoSixth: times[1].format(timeFormat),
+          threeSixth: times[2].format(timeFormat),
+          fourSixth: times[3].format(timeFormat),
+          fiveSixth: times[4].format(timeFormat),
+          sixSixth: times[5].format(timeFormat),
+          fajr: times[6].format(timeFormat),
           city: json.city,
           country: json.country,
         })
-        console.log(Object.values(times).map((time) => time.format('h:mm a')))
+        console.log(Object.values(times).map((time) => time.format(timeFormat)))
       }).catch(ex => {
         console.log('parsing failed', ex)
         let coordinates = new adhan.Coordinates(lat, lon)
@@ -182,13 +182,13 @@ class Layl extends Component {
           today,
           tomorrow,
           loading: false,
-          maghrib: times[0].format('h:mm a'),
-          twoSixth: times[1].format('h:mm a'),
-          threeSixth: times[2].format('h:mm a'),
-          fourSixth: times[3].format('h:mm a'),
-          fiveSixth: times[4].format('h:mm a'),
-          sixSixth: times[5].format('h:mm a'),
-          fajr: times[6].format('h:mm a'),
+          maghrib: times[0].format(timeFormat),
+          twoSixth: times[1].format(timeFormat),
+          threeSixth: times[2].format(timeFormat),
+          fourSixth: times[3].format(timeFormat),
+          fiveSixth: times[4].format(timeFormat),
+          sixSixth: times[5].format(timeFormat),
+          fajr: times[6].format(timeFormat),
           city: city,
         })
       })
