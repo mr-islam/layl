@@ -1,4 +1,4 @@
-![logo](https://raw.githubusercontent.com/mr-islam/layl/master/src/logo.svg?token=AEG3JJH3SDS3NLXCFALQEBS4ZQXKA)
+![logo](https://raw.githubusercontent.com/mr-islam/layl/master/src/logo.svg?token=AEG3JJH3SDS3NLXCFALQEBS4ZQXKA?sanitize=true)
 
 🌙 Easily find out the phases of the night to plan your worship
 
