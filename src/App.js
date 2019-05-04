@@ -48,13 +48,13 @@ function Info () {
               last third of every night, and he says: Who is calling upon me
               that I may answer him? Who is asking from me that I may give
               him? Who is seeking forgiveness that I may forgive him?” <br />(Sahih Bukhari)</blockquote>
-            <p>Knowing these parts of the night lets us follow the lifestyles of the prophets, 
+            <p>These parts of the night lets us follow the lifestyles of the prophets, 
               may peace be upon them all. Divine guidance calls us to sleep parts of the night, 
-              and also to wake up and worship during other parts. Worship includes ritual prayer 
-              (ṣalāh), remembrance (dhikr), Quran recitation, and more. <em>(Also, if you 
-              read the Quran from your computer, try my other app: <a href="https://qawl.navedislam.com">Qawl, the Quran reader 
-              for your desktop</a>.)</em></p>
-            <p>Beyond extra worship, these parts of the night are important for duties like 
+              and also to wake up and worship during other parts. Worship includes prayer 
+              (salah), remembrance (dhikr), Quran recitation, and more. <em>(If you 
+              read the Quran on your computer, you can try my other app: <a href="https://qawl.navedislam.com">
+              Qawl, the Quran reader for desktop</a>.)</em></p>
+            <p>Beyond voluntary worship, these parts of the night are important for duties like 
               praying Isha on time.</p>
           </div>
           <div className='text-column' >
@@ -66,15 +66,15 @@ function Info () {
             <p>The time of Maghrib or Fajr depends on your location. This app finds your 
               location based on your IP address. But this may be inaccurate based on your 
               internet setup, or completely wrong if you use a VPN. Other options for determining 
-              location will be added later, <em>inshā Allah</em>.</p>
-            <p>The calculation of Maghrib time is clear and simple in most places. The 
-              calculation of Fajr relies upon the chosen method. The best method 
+              location will be added later, <em>insha Allah</em>.</p>
+            <p>The calculation of Maghrib time is clear and simple in most places. But the 
+              calculation of Fajr relies upon different methods. The best method 
               is different in each place, and can change with the seasons too. 
               This app tries to choose the best calculation method for your location, 
-              but it may be incorrect. Thus, <strong>please protect your worship by leaving enough 
+              but it may be incorrect. Thus, <strong>please safeguard your worship by keeping enough 
               time before or after the times given by this app</strong>.</p>
-            <p>These details and explanations aren't pretty, but they're part of 
-              responsible app development. May Allah accept our worship, <em>āmīn</em>.</p>
+            <p>These warnings aren't pretty, but they're part of 
+              responsible app development. May Allah accept our worship, <em>ameen</em>.</p>
             <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
           </div>
       </div>
