@@ -32,11 +32,11 @@ function Info () {
   return (
     <div style={{width:'100vw'}}>
       <div className='first-bottom' >
-        <p>How does this work? 👇🏼</p></div>
+        <p><a href="#details">How does this work? 👇🏼</a></p></div>
       <div className='second-screen' >
         <div className='text-row'>
           <div className='text-column' >
-            <h1>Why calculate the night?</h1>
+            <h1 id="details">Why calculate the night?</h1>
             <blockquote>“So perform the regular prayers in the period from the time the sun is 
               past its zenith till the darkness of the night, and [recite] the Qur’an at dawn— 
               dawn recitation is always witnessed— and during the night wake up and pray, 
@@ -79,7 +79,7 @@ function Info () {
           </div>
       </div>
         <div className="footer">
-          <p>Made with 💗 by <a href="https://navedislam.com">@mrislam_</a></p>
+          <p>Made with 💗 by <a href="https://navedislam.com" target="_blank">@mrislam_</a></p>
         </div>
       </div>
     </div>
