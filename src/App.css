@@ -115,4 +115,7 @@ li:before {
     font-size: 0.9em;
     line-height: 1.5em;
   }
+  img {
+    width: 110px;
+  }
 }
