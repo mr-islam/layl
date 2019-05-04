@@ -32,6 +32,12 @@
   width:46%;
   margin:2%;
 }
+blockquote {
+  margin: 0 0 0 -23px;
+  padding: 0 0 0 20px;
+  color: rgba(0, 0, 0, 0.8);
+  border-left: 3px solid rgb(0, 0, 0.9);
+}
 @media all and (max-width: 800px) {
   .text-row {
     display:flex;

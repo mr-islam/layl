@@ -39,6 +39,7 @@ function Info () {
               until the darkening of the night. Moreover, ⸢hold fast to⸣ the Quran's recitation 
               at the dawn ⸢Prayer⸣. Indeed, the recitation at dawn is ever witnessed ⸢by hosts of 
               angels and believers⸣” (The Gracious Qur’an, 17:78-79).</blockquote>
+            <br></br>
             <blockquote>The Messenger of God - blessings and peace be upon him, his family, 
               and companions - said, “Hold fast to night prayer, for it was the way of 
               the righteous before you, a way of drawing closer to your Lord, an expiation 
