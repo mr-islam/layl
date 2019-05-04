@@ -22,6 +22,7 @@
   flex-direction:row;
   width:100%;
   align-items:center;
+  justify-content: space-evenly;
   flex-wrap:wrap;
   align-items: flex-start
 }
@@ -29,8 +30,7 @@
   display:flex;
   flex-direction:column;
   text-align:left;
-  width:46%;
-  margin:2%;
+  width:40%;
 }
 blockquote {
   margin: 0 0 0 -23px;
