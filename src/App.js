@@ -39,13 +39,11 @@ function Info () {
             <h1>Why calculate the night?</h1>
             <p>The night is really significant for the believer, host to great times for worship and 
               prayer:</p>
-            <blockquote>“Be ever steadfast in ⸢observing⸣ the Prayer at the declining of the sun, 
-              until the darkening of the night. Moreover, ⸢hold fast to⸣ the Quran's recitation 
-              at the dawn ⸢Prayer⸣. Indeed, the recitation at dawn is ever witnessed ⸢by hosts of 
-              angels and believers⸣. Moreover, keep a Prayer vigil with it, ⸢reciting from its verses⸣ 
-               during a part of the night as an extra ⸢devotion⸣ for you. It may be that your 
-               Lord wil raise you ⸢in the Hereafter⸣ to a ⸢lofty⸣ Station of Praise ⸢among all 
-               humankind⸣” <br></br>(The Gracious Quran, 17:78-79).</blockquote>
+            <blockquote>“So perform the regular prayers in the period from the time the sun is 
+              past its zenith till the darkness of the night, and [recite] the Qur’an at dawn— 
+              dawn recitation is always witnessed— and during the night wake up and pray, 
+              as an extra offering of your own, so that your Lord may raise you to a [highly]
+              praised status.” <br></br>(The Quran 17:78-79, as translated by Abdel Haleem)</blockquote>
             <p> </p>
             <blockquote>The Messenger of Allah - blessings and peace be upon him, his family, 
               and companions - said, “Our Lord descends to the lowest heaven in the 
