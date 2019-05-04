@@ -38,18 +38,22 @@ function Info () {
             <blockquote>“Be ever steadfast in ⸢observing⸣ the Prayer at the declining of the sun, 
               until the darkening of the night. Moreover, ⸢hold fast to⸣ the Quran's recitation 
               at the dawn ⸢Prayer⸣. Indeed, the recitation at dawn is ever witnessed ⸢by hosts of 
-              angels and believers⸣” (The Gracious Qur’an, 17:78-79).</blockquote>
-            <br></br>
+              angels and believers⸣. Moreover, keep a Prayer vigil with it, ⸢reciting from its verses⸣ 
+               during a part of the night as an extra ⸢devotion⸣ for you. It may be that your 
+               Lord wil raise you ⸢in the Hereafter⸣ to a ⸢lofty⸣ Station of Praise ⸢among all 
+               humankind⸣” <br></br>(The Gracious Quran, 17:78-79).</blockquote>
+            <p> </p>
             <blockquote>The Messenger of Allah - blessings and peace be upon him, his family, 
-              and companions - said, “Hold fast to night prayer, for it was the way of 
-              the righteous before you, a way of drawing closer to your Lord, an expiation 
-              for wrong deeds, and a shield from sin” (Tirmidhi).</blockquote>
-            <p>Although any prayer performed after the Isha prayer qualifies as the 
-              virtuous night prayer, the most virtuous time is in it’s later parts.</p>
+              and companions - said, “Our Lord descends to the lowest heaven in the 
+              last third of every night, and he says: Who is calling upon me
+              that I may answer him? Who is asking from me that I may give
+              him? Who is seeking forgiveness that I may forgive him?” (Sahih Bukhari)</blockquote>
             <p>Knowing these divisions of the night allows us to follow the 
               sleep and worship lifestyles of the prophets, may peace be upon them all. The 
               night is divided into sixths as that easily converts into thirds and halves.
-              Much of the guidance we have uses these three divisions of the night. </p>
+              Much of guidance uses these three divisions of the night to prescribe sleep 
+              and worship in good balance. <em>(If you read the Quran from your computer, 
+              try <a href="https://qawl.navedislam.com">Qawl</a>: the desktop Quran reader.)</em></p>
             <p>More than just virtue, it is important to know divisions of the night so we 
               may fulfill obligations like the Isha prayer within the right time.</p>
             <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
