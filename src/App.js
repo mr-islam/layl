@@ -82,8 +82,8 @@ function Info () {
               producing apps for such important purposes. May Allah accept our worship.</p>
           </div>
       </div>
-        <div style={{textAlign:'center', position:'relative', top:'200%'}}>
-          <p>Made with 💗 by @mrislam_</p>
+        <div className="footer">
+          <p>Made with 💗 by <a href="https://navedislam.com">@mrislam_</a></p>
         </div>
       </div>
     </div>
