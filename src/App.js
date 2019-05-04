@@ -112,7 +112,7 @@ class Layl extends Component {
     this.getTimes = this.getTimes.bind(this)
   }
   getTimes() {
-    fetchJsonp(`https://extreme-ip-lookup.com/json/`)
+    fetch(`https://extreme-ip-lookup.com/json/`)
       .then(response => {
         return response.json()
       }).then(json => {
@@ -122,14 +122,26 @@ class Layl extends Component {
         let continent = json.continent
         let country = json.country
         console.log('location: '+city)
-        this.callApi(city, lat, lon, continent, country)
+        this.callApi(city, lat, lon, country, continent)
       }).catch(ex => {
-        console.log('parsing failed', ex)
+        console.log('parsing ip failed', ex)
+        fetch(`https://geoip-db.com/json/c2634e30-5d22-11e9-a32f-912b09051755`)
+          .then(response => {
+            return response.json()
+          }).then(json => {
+            let city = json.city
+            let lat = json.lat
+            let lon = json.lon
+            let continent = json.continent
+            let country = json.country
+            console.log('location: '+city)
+            this.callApi(city, lat, lon, country)
+          })
       })
   }
-  callApi(city, lat, lon, continent, country) {
-    fetchJsonp(``) //
-      .then(response => { //TODO: update timeout becuase it can be slow https://muslimsalat.com/${city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s
+  callApi(city, lat, lon, country, continent) {
+    fetchJsonp(`https://muslimsalat.com/${city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s`) //
+      .then(response => { //TODO: update timeout becuase it can be slow
         console.log(response)
         return response.json()
       }).then(json => {
