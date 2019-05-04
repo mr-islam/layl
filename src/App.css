@@ -38,6 +38,15 @@ blockquote {
   color: rgba(0, 0, 0, 0.8);
   border-left: 3px solid rgb(0, 0, 0.9);
 }
+a {
+  text-decoration: underline wavy #67B6FF;
+  color: #000;
+  border-radius: 4px;
+}
+a:hover, a:focus {
+  background-color: rgba(255, 103, 103, 0.26);
+  text-decoration: none;
+}
 @media all and (max-width: 800px) {
   .text-row {
     display:flex;
