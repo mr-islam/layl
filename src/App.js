@@ -37,51 +37,45 @@ function Info () {
         <div className='text-row'>
           <div className='text-column' >
             <h1>Why calculate the night?</h1>
-            <p>The night is really significant for the believer, host to great times for worship and 
-              prayer:</p>
             <blockquote>“So perform the regular prayers in the period from the time the sun is 
               past its zenith till the darkness of the night, and [recite] the Qur’an at dawn— 
               dawn recitation is always witnessed— and during the night wake up and pray, 
               as an extra offering of your own, so that your Lord may raise you to a [highly]
-              praised status.” <br></br>(The Quran 17:78-79, as translated by Abdel Haleem)</blockquote>
+              praised status.” <br />(The Quran 17:78-79, as translated by Abdel Haleem)</blockquote>
             <p> </p>
             <blockquote>The Messenger of Allah - blessings and peace be upon him, his family, 
               and companions - said, “Our Lord descends to the lowest heaven in the 
               last third of every night, and he says: Who is calling upon me
               that I may answer him? Who is asking from me that I may give
-              him? Who is seeking forgiveness that I may forgive him?” (Sahih Bukhari)</blockquote>
-            <p>Knowing these divisions of the night allows us to follow the 
-              sleep and worship lifestyles of the prophets, may peace be upon them all. The 
-              night is divided into sixths as that easily converts into thirds and halves.
-              Much of guidance uses these three divisions of the night to prescribe sleep 
-              and worship in good balance. <em>(If you read the Quran from your computer, 
-              try <a href="https://qawl.navedislam.com">Qawl</a>: the desktop Quran reader.)</em></p>
-            <p>More than just virtue, it is important to know divisions of the night so we 
-              may fulfill obligations like the Isha prayer within the right time.</p>
-            <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
+              him? Who is seeking forgiveness that I may forgive him?” <br />(Sahih Bukhari)</blockquote>
+            <p>Knowing these parts of the night lets us follow the lifestyles of the prophets, 
+              may peace be upon them all. Divine guidance calls us to sleep parts of the night, 
+              and also to wake up and worship during other parts. Worship includes ritual prayer 
+              (ṣalāh), remembrance (dhikr), Quran recitation, and more. <em>(Also, if you 
+              read the Quran from your computer, try my other app: <a href="https://qawl.navedislam.com">Qawl, the Quran reader 
+              for your desktop</a>.)</em></p>
+            <p>Beyond extra worship, these parts of the night are important for duties like 
+              praying Isha on time.</p>
           </div>
           <div className='text-column' >
             <h1>Details of calculation</h1>
-            <p>The night is defined to begin at the time of <em>Maghrib</em> prayer, right after sunset, 
-              and lasts till the start of Fajr time, which is dawn. As mentioned previously, 
-              dividing the night into sixths provides the most flexibility and so we will 
-              follow that method.</p>
-            <p>Maghrib marks the beginning of the night and Fajr is its end. Dividing the
-              length of night by six gives the length of one-sixth of the night,
-              which can be added repeatedly to Maghrib time to get each sixth of the night.</p>
-            <p>This website determines your location automatically based on your IP address, 
-              and finds the appropriate times for your location. Note, this may be slightly 
-              inaccurate depending on internet configuration or completely wrong if using a VPN. 
-              Other options for determining location will be added later, <em>insha Allah</em>.</p>
-            <p>Also, although the calculation of Maghrib time is quite clear and simple in
-              most places, the calculation of Fajr relies upon the chosen angle of calculation. 
-              This best angle for calculation varies from place to place, which can then vary 
-              by season. This app tries to automatically choose the best 
-              calculation method for your location, but it may off by some minutes—<strong>please 
-              safeguard your worship by leaving ample time before or after any of the times 
-              produced by this app</strong>.</p>
-            <p>All these details and warnings aren’t pretty, but I think they’re part of 
-              producing apps for such important purposes. May Allah accept our worship.</p>
+            <p>The Islamic night starts at Maghrib time, right after sunset, and lasts until
+              Fajr, which is dawn. The time between them is the night. Our sources mention halves, 
+              thirds and sixths as the divisions of the night. Thus we divide the night into 
+              six parts (sixths) because it easily converts to halves or thirds.</p>
+            <p>The time of Maghrib or Fajr depends on your location. This app finds your 
+              location based on your IP address. But this may be inaccurate based on your 
+              internet setup, or completely wrong if you use a VPN. Other options for determining 
+              location will be added later, <em>inshā Allah</em>.</p>
+            <p>The calculation of Maghrib time is clear and simple in most places. The 
+              calculation of Fajr relies upon the chosen method. The best method 
+              is different in each place, and can change with the seasons too. 
+              This app tries to choose the best calculation method for your location, 
+              but it may be incorrect. Thus, <strong>please protect your worship by leaving enough 
+              time before or after the times given by this app</strong>.</p>
+            <p>These details and explanations aren't pretty, but they're part of 
+              responsible app development. May Allah accept our worship, <em>āmīn</em>.</p>
+            <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
           </div>
       </div>
         <div className="footer">
