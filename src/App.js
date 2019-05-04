@@ -12,14 +12,16 @@ function Table (props) {
   return (
     <div className='layl-container'>
       <img src={logo} alt="Logo"/>
-      <p>The night (¹⁄6) starts at <em>Maghrib</em>: <strong>{props.maghrib}</strong></p>
-      <p>Second sixth (2⁄6) starts at: <strong>{props.twoSixth}</strong> </p>
-      <p>First third ends, second third (3⁄6) begins: <strong>{props.threeSixth}</strong></p>
-      <p>First half ends, second half (4⁄6) begins: <strong>{props.fourSixth}</strong></p>
-      <p>Second third ends, last third (5⁄6) begins: <strong>{props.fiveSixth}</strong></p>
-      <p>Last sixth (6⁄6) of the night starts at: <strong>{props.sixSixth}</strong></p>
-      <p>The night ends at <em>Fajr</em>: <strong>{props.fajr}</strong></p>
-      <p>You are in: <strong>{props.city}, {props.country}</strong></p> {/*TODO: make a resusable component for each line */}
+      <div className='times-container'>
+        <p>The night (¹⁄6) starts at <em>Maghrib</em>: <strong>{props.maghrib}</strong></p>
+        <p>Second sixth (2⁄6) starts at: <strong>{props.twoSixth}</strong> </p>
+        <p>First third ends, second third (3⁄6) begins: <strong>{props.threeSixth}</strong></p>
+        <p>First half ends, second half (4⁄6) begins: <strong>{props.fourSixth}</strong></p>
+        <p>Second third ends, last third (5⁄6) begins: <strong>{props.fiveSixth}</strong></p>
+        <p>Last sixth (6⁄6) starts at: <strong>{props.sixSixth}</strong></p>
+        <p>The night ends at <em>Fajr</em>: <strong>{props.fajr}</strong></p>
+        <p>You are in: <strong>{props.city}, {props.country}</strong></p> {/*TODO: make a resusable component for each line */}
+      </div>
     </div>
   )
 }
