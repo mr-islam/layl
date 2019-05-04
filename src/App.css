@@ -49,12 +49,17 @@ blockquote {
   border-left: 3px solid rgb(0, 0, 0.9);
 }
 a {
-  text-decoration: underline solid #67B6FF;
-  color: #000;
+  text-decoration: underline solid #FF6767;
+  color: #FF6767; /* #67B6FF*/
   border-radius: 4px;
+  transition-property: background;
+  transition-property: all;
+  transition-duration: 0.2s;
 }
 a:hover, a:focus {
-  background-color: rgba(255, 103, 103, 0.26);
+  /*background-color: rgba(255, 103, 103, 0.26);*/
+  background-color: rgba(255, 103, 103, 0.13);
+  color: #000;
   text-decoration: none;
 }
 ul {
