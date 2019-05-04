@@ -57,7 +57,40 @@ a:hover, a:focus {
   background-color: rgba(255, 103, 103, 0.26);
   text-decoration: none;
 }
-@media all and (max-width: 800px) {
+ul {
+	position: relative;
+	list-style: none;
+	margin-left: 0;
+  padding-left: 1.2em;
+  font-size: 1.15em;
+  line-height: 2em;
+}
+li:before {
+  position: absolute;
+	left: 0;
+}
+.zero:before {
+  content: "🌙"
+}
+.one:before {
+	content: "¹⁄₆";
+}
+.two:before {
+  content: "²⁄₆";
+}
+.three:before {
+  content: "³⁄₆";
+}
+.four:before {
+  content: "⁴⁄₆";
+}
+.five:before {
+  content: "⁵⁄₆";
+}
+.six:before {
+  content: "☀";
+}
+@media all and (max-width: 500px) {
   .text-row {
     display:flex;
     flex-direction:column;
@@ -71,5 +104,15 @@ a:hover, a:focus {
     text-align:left;
     width:80%;
     margin:2%;
+  }
+  ul {
+    font-size: 1.05em;
+    line-height: 1.5em;
+  }
+}
+@media all and (max-width: 300px) {
+  ul, p, h1 {
+    font-size: 0.9em;
+    line-height: 1.5em;
   }
 }

@@ -13,15 +13,17 @@ function Table (props) {
     <div className='layl-container'>
       <img src={logo} alt="Logo"/>
       <div className='times-container'>
-        <p>The night (¹⁄6) starts at <em>Maghrib</em>: <strong>{props.maghrib}</strong></p>
-        <p>Second sixth (2⁄6) starts at: <strong>{props.twoSixth}</strong> </p>
-        <p>First third ends, second third (3⁄6) begins: <strong>{props.threeSixth}</strong></p>
-        <p>First half ends, second half (4⁄6) begins: <strong>{props.fourSixth}</strong></p>
-        <p>Second third ends, last third (5⁄6) begins: <strong>{props.fiveSixth}</strong></p>
-        <p>Last sixth (6⁄6) starts at: <strong>{props.sixSixth}</strong></p>
-        <p>The night ends at <em>Fajr</em>: <strong>{props.fajr}</strong></p>
-        <p>You are in: <strong>{props.city}, {props.country}</strong></p> {/*TODO: make a resusable component for each line */}
+        <ul>
+          <li className="zero">Maghrib starts the night: <strong>{props.maghrib}</strong></li>
+          <li className="one">One-sixth of the night: <strong>{props.twoSixth}</strong> </li>
+          <li className="two">One-third of the night: <strong>{props.threeSixth}</strong></li>
+          <li className="three">Half the night: <strong>{props.fourSixth}</strong></li>
+          <li className="four">Last-third of the night: <strong>{props.fiveSixth}</strong></li>
+          <li className="five">Last-sixth of the night: <strong>{props.sixSixth}</strong></li>
+          <li className="six">Fajr ends the night: <strong>{props.fajr}</strong></li>
+        </ul>
       </div>
+      <p><em>You are in {props.city}, {props.country}</em></p> {/*TODO: make a resusable component for each line */}
     </div>
   )
 }
@@ -30,7 +32,7 @@ function Info () {
   return (
     <div style={{width:'100vw'}}>
       <div className='first-bottom' >
-        How does this work? 👇🏼</div>
+        <p>How does this work? 👇🏼</p></div>
       <div className='second-screen' >
         <div className='text-row'>
           <div className='text-column' >
