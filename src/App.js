@@ -46,8 +46,10 @@ function Info () {
               for wrong deeds, and a shield from sin” (Tirmidhi).</blockquote>
             <p>Although any prayer performed after the Isha prayer qualifies as the 
               virtuous night prayer, the most virtuous time is in it’s later parts.</p>
-            <p>Additionally, knowing these divisions of the night allows us to follow the 
-              sleep and worship lifestyles of the prophets, may peace be upon them all.</p>
+            <p>Knowing these divisions of the night allows us to follow the 
+              sleep and worship lifestyles of the prophets, may peace be upon them all. The 
+              night is divided into sixths as that easily converts into thirds and halves.
+              Much of the guidance we have uses these three divisions of the night. </p>
             <p>More than just virtue, it is important to know divisions of the night so we 
               may fulfill obligations like the Isha prayer within the right time.</p>
             <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
