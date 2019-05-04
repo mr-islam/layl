@@ -17,7 +17,7 @@ function Table (props) {
           <li className="zero">Maghrib starts the night: <strong>{props.maghrib}</strong></li>
           <li className="one">One-sixth of the night: <strong>{props.twoSixth}</strong> </li>
           <li className="two">One-third of the night: <strong>{props.threeSixth}</strong></li>
-          <li className="three">Half the night: <strong>{props.fourSixth}</strong></li>
+          <li className="three">Half of the night: <strong>{props.fourSixth}</strong></li>
           <li className="four">Last-third of the night: <strong>{props.fiveSixth}</strong></li>
           <li className="five">Last-sixth of the night: <strong>{props.sixSixth}</strong></li>
           <li className="six">Fajr ends the night: <strong>{props.fajr}</strong></li>
