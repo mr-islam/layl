@@ -50,7 +50,7 @@ blockquote {
 }
 a {
   text-decoration: underline solid #FF6767;
-  color: #FF6767; /* #67B6FF*/
+  color: #000; /* #67B6FF*/
   border-radius: 4px;
   transition-property: background;
   transition-property: all;
