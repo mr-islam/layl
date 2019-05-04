@@ -23,6 +23,7 @@
   width:100%;
   align-items:center;
   flex-wrap:wrap;
+  align-items: flex-start
 }
 .text-column {
   display:flex;
@@ -30,6 +31,7 @@
   text-align:left;
   width:46%;
   margin:2%;
+  height:100%
 }
 @media all and (max-width: 800px) {
   .text-row {
