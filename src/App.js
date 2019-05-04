@@ -119,15 +119,17 @@ class Layl extends Component {
         let city = json.city
         let lat = json.lat
         let lon = json.lon
+        let continent = json.continent
+        let country = json.country
         console.log('location: '+city)
-        this.callApi(city, lat, lon)
+        this.callApi(city, lat, lon, continent, country)
       }).catch(ex => {
         console.log('parsing failed', ex)
       })
   }
-  callApi(city, lat, lon) {
-    fetchJsonp(`https://muslimsalat.com/${city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s`) //
-      .then(response => { //TODO: update timeout becuase it can be slow
+  callApi(city, lat, lon, continent, country) {
+    fetchJsonp(``) //
+      .then(response => { //TODO: update timeout becuase it can be slow https://muslimsalat.com/${city}/weekly.json?key=1f3f533bb4b16343e373be5de3601247s
         console.log(response)
         return response.json()
       }).then(json => {
@@ -166,11 +168,23 @@ class Layl extends Component {
         console.log(Object.values(times).map((time) => time.format(timeFormat)))
       }).catch(ex => {
         console.log('parsing failed', ex)
+        console.log(continent)
         let coordinates = new adhan.Coordinates(lat, lon)
         let today = new Date()
         let tomorrow = new Date()
         tomorrow.setDate(today.getDate()+1)
-        let params = adhan.CalculationMethod.MuslimWorldLeague()
+        var params
+        switch (continent) {
+          case "Asia":
+            params = adhan.CalculationMethod.Karachi()
+            break
+          case "Africa":
+            params = adhan.CalculationMethod.Egyptian()
+            break
+          default:
+            params = adhan.CalculationMethod.MuslimWorldLeague()
+        }
+        console.log(city)
         let prayerTimesToday = new adhan.PrayerTimes(coordinates, today, params)
         let prayerTimesTomorrow = new adhan.PrayerTimes(coordinates, tomorrow, params)
         console.log(prayerTimesTomorrow)
@@ -199,7 +213,8 @@ class Layl extends Component {
           fiveSixth: times[4].format(timeFormat),
           sixSixth: times[5].format(timeFormat),
           fajr: times[6].format(timeFormat),
-          city: city,
+          city,
+          country
         })
       })
   }
