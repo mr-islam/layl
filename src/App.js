@@ -111,10 +111,9 @@ class Layl extends Component {
         let city = json.city
         let lat = json.lat
         let lon = json.lon
-        let continent = json.continent
         let country = json.country
         console.log('location: '+city)
-        this.callApi(city, lat, lon, country, continent)
+        this.callApi(city, lat, lon, country)
       }).catch(ex => {
         console.log('parsing ip failed', ex)
         fetch(`https://geoip-db.com/json/c2634e30-5d22-11e9-a32f-912b09051755`)
@@ -128,6 +127,9 @@ class Layl extends Component {
             let country = json.country
             console.log('location: '+city)
             this.callApi(city, lat, lon, country)
+          }).catch(ex => {
+            console.log('parsing ip 2 failed', ex)
+            //TODO: add geolocation API call, then run callApi
           })
       })
   }
@@ -175,7 +177,7 @@ class Layl extends Component {
     }
   componentDidUpdate() {
   }
-  render() {
+  render() { //TODO: instead of the table, show a loading variable only.
     if (this.state.loading) {
       return (
       <div>
