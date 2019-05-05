@@ -41,13 +41,13 @@ function Info () {
               past its zenith till the darkness of the night, and [recite] the Qur’an at dawn— 
               dawn recitation is always witnessed— and during the night wake up and pray, 
               as an extra offering of your own, so that your Lord may raise you to a [highly]
-              praised status.” <br />(The Quran 17:78-79, as translated by Abdel Haleem)</blockquote>
+              praised status.” <br /><em>(The Quran 17:78-79, as translated by Abdel Haleem)</em></blockquote>
             <p> </p>
             <blockquote>The Messenger of Allah - blessings and peace be upon him, his family, 
               and companions - said, “Our Lord descends to the lowest heaven in the 
               last third of every night, and he says: Who is calling upon me
               that I may answer him? Who is asking from me that I may give
-              him? Who is seeking forgiveness that I may forgive him?” <br />(Sahih Bukhari)</blockquote>
+              him? Who is seeking forgiveness that I may forgive him?” <br /><em>(Sahih Bukhari)</em></blockquote>
             <p>These parts of the night lets us follow the lifestyles of the prophets, 
               may peace be upon them all. Divine guidance calls us to sleep parts of the night, 
               and also to wake up and worship during other parts. Worship includes prayer 
