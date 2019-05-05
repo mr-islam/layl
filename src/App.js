@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import fetchJsonp from 'fetch-jsonp';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 import logo from "./logo.svg";
 import adhan from "adhan"
 import './App.css'
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat)
 
 
