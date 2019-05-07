@@ -69,8 +69,8 @@ function Info () {
             <p>The calculation of Maghrib time is clear and simple in most places. But the 
               calculation of Fajr relies upon different methods. The best method 
               is different in each place, and can change with the seasons too. 
-              This app uses a well-tested calculation method with the proven <em>"Adhan"</em> 
-              prayer calculation software—but it may be incorrect. 
+              This app uses a well-tested calculation method with the proven <em>"Adhan"</em> prayer
+              calculation software—but it may be incorrect. 
               Thus, <strong>please safeguard your worship by keeping enough 
               time before or after the times given by this app</strong>.</p>
             <p>These warnings aren't pretty, but they're part of 
