@@ -7,7 +7,7 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat)
 
 
-function Table (props) {
+function Table (props) { // TODO: Breakup the table into surroinding things like logo, and the actual times
   return (
     <div className='layl-container'>
       <img src={logo} alt="Logo"/>
@@ -27,7 +27,7 @@ function Table (props) {
   )
 }
 
-function Info () {
+function Info () { //TODO: move texts to a different file
   return (
     <div style={{width:'100vw'}}>
       <div className='first-bottom' >
