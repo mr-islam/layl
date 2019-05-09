@@ -103,30 +103,27 @@ class Layl extends Component {
     }
     this.getTimes = this.getTimes.bind(this)
   }
-  getTimes() {
+  processLoc(json) {
+    let city = json.city
+    let lat = json.lat
+    let lon = json.lon
+    let country = json.country
+    console.log('location: '+city)
+    this.callApi(city, lat, lon, country)
+  }
+  getTimes() { //TODO: store location as a cookie, so no unnecessary fetches. that allows offline functionality, in addition to just geolocation anyway!!
     fetch(`https://extreme-ip-lookup.com/json/`)
       .then(response => {
         return response.json()
       }).then(json => {
-        let city = json.city
-        let lat = json.lat
-        let lon = json.lon
-        let country = json.country
-        console.log('location: '+city)
-        this.callApi(city, lat, lon, country)
+        this.processLoc(json);
       }).catch(ex => {
         console.log('parsing ip failed', ex)
         fetch(`https://geoip-db.com/json/c2634e30-5d22-11e9-a32f-912b09051755`)
           .then(response => {
             return response.json()
           }).then(json => {
-            let city = json.city
-            let lat = json.lat
-            let lon = json.lon
-            let continent = json.continent
-            let country = json.country
-            console.log('location: '+city)
-            this.callApi(city, lat, lon, country)
+            this.processLoc(json);
           }).catch(ex => {
             console.log('parsing ip 2 failed', ex)
             //TODO: add geolocation API call, then run callApi
