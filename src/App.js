@@ -175,7 +175,7 @@ class Layl extends Component {
   componentDidUpdate() {
   }
   render() { //TODO: instead of the table, show a loading variable only.
-    if (!this.state.loading) {
+    if (this.state.loading) {
       return (
       <div>
         <div style={{textAlign: "center"}}>
