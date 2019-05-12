@@ -117,6 +117,12 @@ li:before {
     width:80%;
     margin:2%;
   }
+  .footer {
+    display:flex;
+    flex-direction:column;
+    text-align: center;
+    align-items: center;
+  }
   ul {
     font-size: 1.05em;
     line-height: 1.5em;

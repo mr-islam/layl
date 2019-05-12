@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from "./logo.svg";
 import adhan from "adhan"
 import './App.css'
+import GitHubButton from 'react-github-btn'
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat)
@@ -80,6 +81,10 @@ function Info () { //TODO: move texts to a different file
       </div>
         <div className="footer">
           <p>Made with 💗 by <a href="https://navedislam.com" target="_blank">@mrislam_</a></p>
+          <div style={{paddingLeft: '15px', paddingBottom: '10px', color: 'white'}}>
+            <GitHubButton href="https://github.com/mr-islam/layl" data-icon="octicon-star" 
+              data-show-count="true" aria-label="Star mr-islam/layl on GitHub">Star</GitHubButton>
+          </div>
         </div>
       </div>
     </div>

@@ -10,6 +10,7 @@
     "jsonp": "^0.2.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
+    "react-github-btn": "^1.0.5",
     "react-scripts": "2.1.8"
   },
   "scripts": {
