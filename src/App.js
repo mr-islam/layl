@@ -155,15 +155,14 @@ class Layl extends Component {
       lon
     })
     console.log('location: '+city)
-    this.calcTimes(this.state.city, this.state.lat, this.state.lon)
+    this.calcTimes()
   }
-  calcTimes(city, lat, lon) {
-      let coordinates = new adhan.Coordinates(lat, lon)
+  calcTimes() {
+      let coordinates = new adhan.Coordinates(this.state.lat, this.state.lon)
       let today = new Date()
       let tomorrow = new Date()
       tomorrow.setDate(today.getDate()+1)
       var params = adhan.CalculationMethod.MoonsightingCommittee()
-      console.log(city)
       let prayerTimesToday = new adhan.PrayerTimes(coordinates, today, params)
       let prayerTimesTomorrow = new adhan.PrayerTimes(coordinates, tomorrow, params)
       console.log(prayerTimesTomorrow)
