@@ -142,7 +142,6 @@ class Layl extends Component {
             this.processLoc(json);
           }).catch(ex => {
             console.log('parsing ip 2 failed', ex)
-            //TODO: add geolocation API call, then run calcTimes
           })
       })
   }
