@@ -117,8 +117,11 @@ class Layl extends Component {
         console.log(position.coords.latitude, position.coords.longitude);
         this.setState({
           lat: position.coords.latitude,
-          lon: position.coords.longitude
+          lon: position.coords.longitude,
+          city: position.coords.latitude,
+          country: position.coords.longitude
         })
+        this.calcTimes()
       })
     } else {
       /* geolocation IS NOT available */
