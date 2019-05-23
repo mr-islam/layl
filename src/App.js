@@ -108,32 +108,23 @@ class Layl extends Component {
       lat: null,
       lon: null
     }
-    this.getTimes = this.getTimes.bind(this)
+    this.locationApi = this.locationApi.bind(this)
     this.geolocate = this.geolocate.bind(this)
   }
   geolocate() {
     if ("geolocation" in navigator) {
-      
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords.latitude, position.coords.longitude);
+        this.setState({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude
+        })
+      })
     } else {
       /* geolocation IS NOT available */
     }
-    navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position.coords.latitude, position.coords.longitude);
-      this.setState({
-        lat: position.coords.latitude,
-        lon: position.coords.longitude
-      })
-    });
   }
-  processLoc(json) {
-    let city = json.city
-    let lat = json.lat
-    let lon = json.lon
-    let country = json.country
-    console.log('location: '+city)
-    this.callApi(city, lat, lon, country)
-  }
-  getTimes() { //TODO: store location as a cookie, so no unnecessary fetches. that allows offline functionality, in addition to just geolocation anyway!!
+  locationApi() { //TODO: store location as a cookie, so no unnecessary fetches. that allows offline functionality, in addition to just geolocation anyway!!
     fetch(`https://extreme-ip-lookup.com/json/`)
       .then(response => {
         return response.json()
@@ -148,11 +139,25 @@ class Layl extends Component {
             this.processLoc(json);
           }).catch(ex => {
             console.log('parsing ip 2 failed', ex)
-            //TODO: add geolocation API call, then run callApi
+            //TODO: add geolocation API call, then run calcTimes
           })
       })
   }
-  callApi(city, lat, lon, country) {
+  processLoc(json) {
+    let city = json.city
+    let lat = json.lat
+    let lon = json.lon
+    let country = json.country
+    this.setState({
+      city,
+      country,
+      lat, 
+      lon
+    })
+    console.log('location: '+city)
+    this.calcTimes(this.state.city, this.state.lat, this.state.lon)
+  }
+  calcTimes(city, lat, lon) {
       let coordinates = new adhan.Coordinates(lat, lon)
       let today = new Date()
       let tomorrow = new Date()
@@ -187,13 +192,11 @@ class Layl extends Component {
         fiveSixth: times[4].format(timeFormat),
         sixSixth: times[5].format(timeFormat),
         fajr: times[6].format(timeFormat),
-        city,
-        country
       })
   }
   componentDidMount() {
-    this.getTimes()
-    }
+    this.locationApi()
+  }
   componentDidUpdate() {
   }
   render() { //TODO: instead of the table, show a loading variable only.
