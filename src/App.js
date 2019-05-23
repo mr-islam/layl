@@ -23,7 +23,7 @@ function Table (props) { // TODO: Breakup the table into surroinding things like
           <li className="six">Fajr ends the night: <strong>{props.fajr}</strong></li>
         </ul>
       </div>
-      <p><em>You are in {props.city}, {props.country}</em></p> {/*TODO: make a resusable component for each line */}
+      <p><em>You are in {props.city}, {props.country}</em> <button onClick={props.geolocate}>Wrong location?</button></p> {/*TODO: make a resusable component for each line */}
     </div>
   )
 }
@@ -105,8 +105,25 @@ class Layl extends Component {
       tomorrow: null,
       fajr: null,
       maghrib: null,
+      lat: null,
+      lon: null
     }
     this.getTimes = this.getTimes.bind(this)
+    this.geolocate = this.geolocate.bind(this)
+  }
+  geolocate() {
+    if ("geolocation" in navigator) {
+      
+    } else {
+      /* geolocation IS NOT available */
+    }
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position.coords.latitude, position.coords.longitude);
+      this.setState({
+        lat: position.coords.latitude,
+        lon: position.coords.longitude
+      })
+    });
   }
   processLoc(json) {
     let city = json.city
@@ -213,6 +230,7 @@ class Layl extends Component {
         country={this.state.country}
         maghrib={this.state.maghrib}
         fajr={this.state.fajr}
+        geolocate={this.geolocate}
         />
         <Info />
       </div>
