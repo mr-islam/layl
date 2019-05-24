@@ -119,10 +119,18 @@ class Layl extends Component {
         this.setState({
           lat: position.coords.latitude,
           lon: position.coords.longitude,
-          city: position.coords.latitude,
-          country: position.coords.longitude
         })
         this.calcTimes()
+        let geo = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${this.state.lat}%2C${this.state.lon}%2C150&mode=retrieveAddresses&gen=9&app_id=oye7XL09Prx5G64NrSE8&app_code=-Dw2OYlGw40jZwCC_UGvKg`
+        fetch(geo).then(response => response.json())
+          .then(result => {
+            let location = result.Response.View[0].Result[0].Location.Address
+            console.dir(location)
+            this.setState({
+              city: location.City,
+              country: location.Country,
+            })
+          })
       })
     } else {
       /* geolocation IS NOT available */
