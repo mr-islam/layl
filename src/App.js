@@ -23,7 +23,8 @@ function Table (props) { // TODO: Breakup the table into surroinding things like
           <li className="six">Fajr ends the night: <strong>{props.fajr}</strong></li>
         </ul>
       </div>
-      <p><em>You are in {props.city}, {props.country}</em> <button onClick={props.geolocate}>Wrong location?</button></p> {/*TODO: make a resusable component for each line */}
+      <p><em>You are in {props.city}, {props.country}</em></p> {/*TODO: make a resusable component for each line */}
+      <a className="a" onClick={props.geolocate}>Wrong location?</a>
     </div>
   )
 }

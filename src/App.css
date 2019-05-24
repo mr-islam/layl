@@ -62,6 +62,7 @@ a {
   transition-property: background;
   transition-property: all;
   transition-duration: 0.2s;
+  cursor: pointer;
 }
 a:hover, a:focus {
   /*background-color: rgba(255, 103, 103, 0.26);*/
