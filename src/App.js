@@ -242,7 +242,7 @@ class Layl extends Component {
   }
   componentDidUpdate() {
   }
-  render() { //TODO: instead of the table, show a loading variable only.
+  render() {
     if (this.state.loading) {
       return (
       <div>
