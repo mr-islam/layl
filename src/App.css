@@ -104,6 +104,9 @@ li:before {
   content: "☀";
 }
 @media all and (max-width: 500px) {
+  .layl-container {
+    height:85vh; 
+  }
   .text-row {
     display:flex;
     flex-direction:column;
