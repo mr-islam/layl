@@ -16,7 +16,7 @@ function LocationButton (props) {
 function Location (props) {
   return (
     <div style={{textAlign: "center"}}>
-      <p><em>You are in {props.city}, {props.country}</em></p> {/*TODO: make a resusable component for each line */}
+      <p><em>You are in {props.city}, {props.country}</em></p>
     </div>
   )
 }
@@ -37,7 +37,7 @@ function Times (props) {
   )
 }
 
-function Table (props) { // TODO: Breakup the table into surroinding things like logo, and the actual times
+function Table (props) {
   if (!props.reversed) {
     return (
       <div className='layl-container'>
@@ -60,7 +60,7 @@ function Table (props) { // TODO: Breakup the table into surroinding things like
   }
 }
 
-function Info () { //TODO: move texts to a different file
+function Info () { 
   return (
     <div style={{width:'100vw'}}>
       <div className='first-bottom' >
@@ -132,8 +132,8 @@ class Layl extends Component {
       city: "",
       country: "",
       loading: true,
-      times: null,//
-      today: null, //TODO: question: set date like this, or set by API return data?
+      times: null,
+      today: null,
       tomorrow: null,
       fajr: null,
       maghrib: null,
@@ -169,7 +169,7 @@ class Layl extends Component {
       /* geolocation IS NOT available */
     }
   }
-  locationApi() { //TODO: store location as a cookie, so no unnecessary fetches. that allows offline functionality, in addition to just geolocation anyway!!
+  locationApi() {
     fetch(`https://extreme-ip-lookup.com/json/`)
       .then(response => {
         return response.json()
