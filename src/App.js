@@ -7,26 +7,57 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat)
 
-
-function Table (props) { // TODO: Breakup the table into surroinding things like logo, and the actual times
+function LocationButton (props) {
   return (
-    <div className='layl-container'>
-      <img src={logo} alt="Logo"/>
-      <div className='times-container'>
-        <ul>
-          <li className="zero">Maghrib starts the night: <strong>{props.maghrib}</strong></li>
-          <li className="one">One-sixth of the night: <strong>{props.twoSixth}</strong> </li>
-          <li className="two">One-third of the night: <strong>{props.threeSixth}</strong></li>
-          <li className="three">Half of the night: <strong>{props.fourSixth}</strong></li>
-          <li className="four">Last-third of the night: <strong>{props.fiveSixth}</strong></li>
-          <li className="five">Last-sixth of the night: <strong>{props.sixSixth}</strong></li>
-          <li className="six">Fajr ends the night: <strong>{props.fajr}</strong></li>
-        </ul>
-      </div>
+    <a className="a" onClick={props.geolocate}>Wrong location?</a>
+  )
+}
+
+function Location (props) {
+  return (
+    <div style={{textAlign: "center"}}>
       <p><em>You are in {props.city}, {props.country}</em></p> {/*TODO: make a resusable component for each line */}
-      <a className="a" onClick={props.geolocate}>Wrong location?</a>
     </div>
   )
+}
+
+function Times (props) {
+  return (
+    <div className='times-container'>
+      <ul>
+        <li className="zero">Maghrib starts the night: <strong>{props.maghrib}</strong></li>
+        <li className="one">One-sixth of the night: <strong>{props.twoSixth}</strong> </li>
+        <li className="two">One-third of the night: <strong>{props.threeSixth}</strong></li>
+        <li className="three">Half of the night: <strong>{props.fourSixth}</strong></li>
+        <li className="four">Last-third of the night: <strong>{props.fiveSixth}</strong></li>
+        <li className="five">Last-sixth of the night: <strong>{props.sixSixth}</strong></li>
+        <li className="six">Fajr ends the night: <strong>{props.fajr}</strong></li>
+      </ul>
+    </div>
+  )
+}
+
+function Table (props) { // TODO: Breakup the table into surroinding things like logo, and the actual times
+  if (!props.reversed) {
+    return (
+      <div className='layl-container'>
+        <img src={logo} alt="Logo"/>
+        <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
+          fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
+        <Location city={props.city} country={props.country} />
+        <LocationButton geolocate={props.geolocate}/>
+      </div>
+    )
+  } else {
+    return (
+      <div className='layl-container'>
+        <img src={logo} alt="Logo"/>
+        <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
+          fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
+        <Location city={props.city} country={props.country} />
+      </div>
+    )
+  }
 }
 
 function Info () { //TODO: move texts to a different file
@@ -107,7 +138,8 @@ class Layl extends Component {
       fajr: null,
       maghrib: null,
       lat: null,
-      lon: null
+      lon: null,
+      reversed: false,
     }
     this.locationApi = this.locationApi.bind(this)
     this.geolocate = this.geolocate.bind(this)
@@ -129,6 +161,7 @@ class Layl extends Component {
             this.setState({
               city: location.City,
               country: location.Country,
+              reversed: true
             })
           })
       })
@@ -226,6 +259,7 @@ class Layl extends Component {
         country={this.state.country}
         maghrib={this.state.maghrib}
         fajr={this.state.fajr}
+        reversed={this.state.reversed}
         />
         <Info />
       </div>
@@ -244,6 +278,7 @@ class Layl extends Component {
         maghrib={this.state.maghrib}
         fajr={this.state.fajr}
         geolocate={this.geolocate}
+        reversed={this.state.reversed}
         />
         <Info />
       </div>
