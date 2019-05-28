@@ -95,10 +95,10 @@ function Info () {
               Fajr, which is dawn. The time between them is the night. Our sources mention halves, 
               thirds and sixths as the divisions of the night. Thus we divide the night into 
               six parts (sixths) because it easily converts to halves or thirds.</p>
-            <p>The time of Maghrib or Fajr depends on your location. This app finds your 
-              location based on your IP address. But this may be inaccurate based on your 
-              internet setup, or completely wrong if you use a VPN. Other options for determining 
-              location will be added later, <em>insha Allah</em>.</p>
+            <p>The time of Maghrib or Fajr depends on your location. This app automatically finds your 
+              location based on your internet connection. But this may be inaccurate based on the 
+              network, or completely wrong if you use a VPN. If this happens, press 
+              the <em>"Wrong location?"</em> button to share your GPS location with Layl for best accuracy.</p>
             <p>The calculation of Maghrib time is clear and simple in most places. But the 
               calculation of Fajr relies upon different methods. The best method 
               is different in each place, and can change with the seasons too. 
