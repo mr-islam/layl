@@ -9,7 +9,7 @@ dayjs.extend(customParseFormat)
 
 function LocationButton (props) {
   return (
-    <a className="a" onClick={props.geolocate}>Wrong location?</a>
+    <a className="locButton" onClick={props.geolocate}>Wrong location?</a>
   )
 }
 

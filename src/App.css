@@ -70,6 +70,9 @@ a:hover, a:focus {
   color: #000;
   text-decoration: none;
 }
+.locButton {
+  font-size: 0.85em;
+}
 ul {
 	position: relative;
 	list-style: none;
