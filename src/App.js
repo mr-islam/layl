@@ -7,28 +7,60 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat)
 
-
-function Table (props) { // TODO: Breakup the table into surroinding things like logo, and the actual times
+function LocationButton (props) {
   return (
-    <div className='layl-container'>
-      <img src={logo} alt="Logo"/>
-      <div className='times-container'>
-        <ul>
-          <li className="zero">Maghrib starts the night: <strong>{props.maghrib}</strong></li>
-          <li className="one">One-sixth of the night: <strong>{props.twoSixth}</strong> </li>
-          <li className="two">One-third of the night: <strong>{props.threeSixth}</strong></li>
-          <li className="three">Half of the night: <strong>{props.fourSixth}</strong></li>
-          <li className="four">Last-third of the night: <strong>{props.fiveSixth}</strong></li>
-          <li className="five">Last-sixth of the night: <strong>{props.sixSixth}</strong></li>
-          <li className="six">Fajr ends the night: <strong>{props.fajr}</strong></li>
-        </ul>
-      </div>
-      <p><em>You are in {props.city}, {props.country}</em></p> {/*TODO: make a resusable component for each line */}
+    <a className="locButton" onClick={props.geolocate}>Wrong location?</a>
+  )
+}
+
+function Location (props) {
+  return (
+    <div style={{textAlign: "center"}}>
+      <p><em>You are in {props.city}, {props.country}</em></p>
     </div>
   )
 }
 
-function Info () { //TODO: move texts to a different file
+function Times (props) {
+  return (
+    <div className='times-container'>
+      <ul>
+        <li className="zero">Maghrib starts the night: <strong>{props.maghrib}</strong></li>
+        <li className="one">One-sixth of the night: <strong>{props.twoSixth}</strong> </li>
+        <li className="two">One-third of the night: <strong>{props.threeSixth}</strong></li>
+        <li className="three">Half of the night: <strong>{props.fourSixth}</strong></li>
+        <li className="four">Last-third of the night: <strong>{props.fiveSixth}</strong></li>
+        <li className="five">Last-sixth of the night: <strong>{props.sixSixth}</strong></li>
+        <li className="six">Fajr ends the night: <strong>{props.fajr}</strong></li>
+      </ul>
+    </div>
+  )
+}
+
+function Table (props) {
+  if (!props.reversed) {
+    return (
+      <div className='layl-container'>
+        <img src={logo} alt="Logo"/>
+        <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
+          fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
+        <Location city={props.city} country={props.country} />
+        <LocationButton geolocate={props.geolocate}/>
+      </div>
+    )
+  } else {
+    return (
+      <div className='layl-container'>
+        <img src={logo} alt="Logo"/>
+        <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
+          fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
+        <Location city={props.city} country={props.country} />
+      </div>
+    )
+  }
+}
+
+function Info () { 
   return (
     <div style={{width:'100vw'}}>
       <div className='first-bottom' >
@@ -56,6 +88,7 @@ function Info () { //TODO: move texts to a different file
               Qawl, the Quran reader for desktop</a>.)</em></p>
             <p>Beyond voluntary worship, these parts of the night are important for duties like 
               praying Isha on time.</p>
+            <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
           </div>
           <div className='text-column' >
             <h1>Details of calculation</h1>
@@ -63,10 +96,10 @@ function Info () { //TODO: move texts to a different file
               Fajr, which is dawn. The time between them is the night. Our sources mention halves, 
               thirds and sixths as the divisions of the night. Thus we divide the night into 
               six parts (sixths) because it easily converts to halves or thirds.</p>
-            <p>The time of Maghrib or Fajr depends on your location. This app finds your 
-              location based on your IP address. But this may be inaccurate based on your 
-              internet setup, or completely wrong if you use a VPN. Other options for determining 
-              location will be added later, <em>insha Allah</em>.</p>
+            <p>The time of Maghrib or Fajr depends on your location. This app automatically finds your 
+              location based on your internet connection. But this may be inaccurate based on the 
+              network, or completely wrong if you use a VPN. If this happens, press 
+              the <em>"Wrong location?"</em> button to share your GPS location with Layl for best accuracy.</p>
             <p>The calculation of Maghrib time is clear and simple in most places. But the 
               calculation of Fajr relies upon different methods. The best method 
               is different in each place, and can change with the seasons too. 
@@ -77,7 +110,6 @@ function Info () { //TODO: move texts to a different file
               worship by keeping enough time before or after the times given by any app.</p>
             <p>These warnings aren't pretty, but they're part of 
               responsible app development. May Allah accept our worship, <em>ameen</em>.</p>
-            <p><a href="https://www.gettoby.com/p/jfjfjlg8mpw2">Sources and further reading.</a></p>
           </div>
       </div>
         <div className="footer">
@@ -101,23 +133,44 @@ class Layl extends Component {
       city: "",
       country: "",
       loading: true,
-      times: null,//
-      today: null, //TODO: question: set date like this, or set by API return data?
+      times: null,
+      today: null,
       tomorrow: null,
       fajr: null,
       maghrib: null,
+      lat: null,
+      lon: null,
+      reversed: false,
     }
-    this.getTimes = this.getTimes.bind(this)
+    this.locationApi = this.locationApi.bind(this)
+    this.geolocate = this.geolocate.bind(this)
   }
-  processLoc(json) {
-    let city = json.city
-    let lat = json.lat
-    let lon = json.lon
-    let country = json.country
-    console.log('location: '+city)
-    this.callApi(city, lat, lon, country)
+  geolocate() {
+    if ("geolocation" in navigator) {
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log(position.coords.latitude, position.coords.longitude);
+        this.setState({
+          lat: position.coords.latitude,
+          lon: position.coords.longitude,
+        })
+        this.calcTimes()
+        let geo = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${this.state.lat}%2C${this.state.lon}%2C150&mode=retrieveAddresses&gen=9&app_id=oye7XL09Prx5G64NrSE8&app_code=-Dw2OYlGw40jZwCC_UGvKg`
+        fetch(geo).then(response => response.json())
+          .then(result => {
+            let location = result.Response.View[0].Result[0].Location.Address
+            console.dir(location)
+            this.setState({
+              city: location.City,
+              country: location.Country,
+              reversed: true
+            })
+          })
+      })
+    } else {
+      /* geolocation IS NOT available */
+    }
   }
-  getTimes() { //TODO: store location as a cookie, so no unnecessary fetches. that allows offline functionality, in addition to just geolocation anyway!!
+  locationApi() {
     fetch(`https://extreme-ip-lookup.com/json/`)
       .then(response => {
         return response.json()
@@ -132,17 +185,29 @@ class Layl extends Component {
             this.processLoc(json);
           }).catch(ex => {
             console.log('parsing ip 2 failed', ex)
-            //TODO: add geolocation API call, then run callApi
           })
       })
   }
-  callApi(city, lat, lon, country) {
-      let coordinates = new adhan.Coordinates(lat, lon)
+  processLoc(json) {
+    let city = json.city
+    let lat = json.lat
+    let lon = json.lon
+    let country = json.country
+    this.setState({
+      city,
+      country,
+      lat, 
+      lon
+    })
+    console.log('location: '+city)
+    this.calcTimes()
+  }
+  calcTimes() {
+      let coordinates = new adhan.Coordinates(this.state.lat, this.state.lon)
       let today = new Date()
       let tomorrow = new Date()
       tomorrow.setDate(today.getDate()+1)
       var params = adhan.CalculationMethod.MoonsightingCommittee()
-      console.log(city)
       let prayerTimesToday = new adhan.PrayerTimes(coordinates, today, params)
       let prayerTimesTomorrow = new adhan.PrayerTimes(coordinates, tomorrow, params)
       console.log(prayerTimesTomorrow)
@@ -171,16 +236,14 @@ class Layl extends Component {
         fiveSixth: times[4].format(timeFormat),
         sixSixth: times[5].format(timeFormat),
         fajr: times[6].format(timeFormat),
-        city,
-        country
       })
   }
   componentDidMount() {
-    this.getTimes()
-    }
+    this.locationApi()
+  }
   componentDidUpdate() {
   }
-  render() { //TODO: instead of the table, show a loading variable only.
+  render() {
     if (this.state.loading) {
       return (
       <div>
@@ -197,6 +260,7 @@ class Layl extends Component {
         country={this.state.country}
         maghrib={this.state.maghrib}
         fajr={this.state.fajr}
+        reversed={this.state.reversed}
         />
         <Info />
       </div>
@@ -214,6 +278,8 @@ class Layl extends Component {
         country={this.state.country}
         maghrib={this.state.maghrib}
         fajr={this.state.fajr}
+        geolocate={this.geolocate}
+        reversed={this.state.reversed}
         />
         <Info />
       </div>

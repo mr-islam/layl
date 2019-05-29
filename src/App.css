@@ -62,12 +62,16 @@ a {
   transition-property: background;
   transition-property: all;
   transition-duration: 0.2s;
+  cursor: pointer;
 }
 a:hover, a:focus {
   /*background-color: rgba(255, 103, 103, 0.26);*/
   background-color: rgba(255, 103, 103, 0.13);
   color: #000;
   text-decoration: none;
+}
+.locButton {
+  font-size: 0.85em;
 }
 ul {
 	position: relative;
@@ -103,6 +107,9 @@ li:before {
   content: "☀";
 }
 @media all and (max-width: 500px) {
+  .layl-container {
+    height:85vh; 
+  }
   .text-row {
     display:flex;
     flex-direction:column;
