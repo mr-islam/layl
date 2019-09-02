@@ -113,7 +113,7 @@ function Info () {
           </div>
       </div>
         <div className="footer">
-          <p>Made with 💗 by <a href="https://navedislam.com" target="_blank">@mrislam_</a></p>
+          <p>Made with 💗 by <a href="https://navedislam.com" target="_blank">Naved</a></p>
           <div style={{paddingLeft: '15px', paddingBottom: '10px', color: 'white'}}>
             <GitHubButton href="https://github.com/mr-islam/layl" data-icon="octicon-star" 
               data-show-count="true" aria-label="Star mr-islam/layl on GitHub">Star</GitHubButton>
