@@ -2,7 +2,7 @@
   "name": "layl-react",
   "version": "0.2.0",
   "private": true,
-  "homepage": "/foobar/",
+  "homepage": "http://navedislam.com/layl",
   "dependencies": {
     "adhan": "^3.0.0",
     "axios": "^0.18.0",
