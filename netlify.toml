@@ -4,8 +4,8 @@
   status = 301
   force = true
 
-[[redirects]]
-  from = "https://layl.navedislam.com/layl"
-  to = "https://layl.navedislam.com"
-  status = 200
-  force = true
+# [[redirects]]
+#   from = "https://layl.navedislam.com/layl"
+#   to = "https://layl.navedislam.com"
+#   status = 200
+#   force = true
