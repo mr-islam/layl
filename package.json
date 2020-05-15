@@ -1,7 +1,6 @@
 {
   "name": "layl-react",
   "version": "0.2.0",
-  "homepage": "http://navedislam.com/layl",
   "private": true,
   "dependencies": {
     "adhan": "^3.0.0",
