@@ -3,12 +3,12 @@
   "name": "Layl: Night divisions for worship",
   "icons": [
     {
-        "src": "/android-chrome-192x192.png?v=qAJ2px4dX0",
+        "src": "%PUBLIC_URL%/android-chrome-192x192.png?v=qAJ2px4dX0",
         "sizes": "192x192",
         "type": "image/png"
     },
     {
-        "src": "/android-chrome-256x256.png?v=qAJ2px4dX0",
+        "src": "%PUBLIC_URL%/android-chrome-256x256.png?v=qAJ2px4dX0",
         "sizes": "256x256",
         "type": "image/png"
     }
