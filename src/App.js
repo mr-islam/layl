@@ -171,14 +171,15 @@ class Layl extends Component {
     }
   }
   locationApi() {
-    fetch(`https://extreme-ip-lookup.com/json/`)
+    fetch(`https://geolocation-db.com/json/c2634e30-5d22-11e9-a32f-912b09051755
+    `) 
       .then(response => {
         return response.json()
       }).then(json => {
         this.processLoc(json);
       }).catch(ex => {
         console.log('parsing ip failed', ex)
-        fetch(`https://geoip-db.com/json/c2634e30-5d22-11e9-a32f-912b09051755`)
+        fetch(`https://extreme-ip-lookup.com/json/`)
           .then(response => {
             return response.json()
           }).then(json => {
@@ -190,9 +191,9 @@ class Layl extends Component {
   }
   processLoc(json) {
     let city = json.city
-    let lat = json.lat
-    let lon = json.lon
-    let country = json.country
+    let lat = json.latitude || json.lat
+    let lon = json.longitude || json.lon
+    let country = json.country_code || json.country
     this.setState({
       city,
       country,
