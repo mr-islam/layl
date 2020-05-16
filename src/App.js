@@ -132,7 +132,7 @@ class Layl extends Component {
     this.state = {
       city: "",
       country: "",
-      loading: true,
+      loading: false,
       times: null,
       today: null,
       tomorrow: null,
@@ -142,11 +142,11 @@ class Layl extends Component {
       lon: null,
       reversed: false,
     }
-    this.locationApi = this.locationApi.bind(this)
     this.geolocate = this.geolocate.bind(this)
   }
   geolocate() {
     if ("geolocation" in navigator) {
+      this.setState({loading: true})
       navigator.geolocation.getCurrentPosition((position) => {
         console.log(position.coords.latitude, position.coords.longitude);
         this.setState({
@@ -162,45 +162,14 @@ class Layl extends Component {
             this.setState({
               city: location.City,
               country: location.Country,
-              reversed: true
+              reversed: true,
+              loading: false
             })
           })
       })
     } else {
       /* geolocation IS NOT available */
     }
-  }
-  locationApi() {
-    fetch(`https://extreme-ip-lookup.com/json/`)
-      .then(response => {
-        return response.json()
-      }).then(json => {
-        this.processLoc(json);
-      }).catch(ex => {
-        console.log('parsing ip failed', ex)
-        fetch(`https://geoip-db.com/json/c2634e30-5d22-11e9-a32f-912b09051755`)
-          .then(response => {
-            return response.json()
-          }).then(json => {
-            this.processLoc(json);
-          }).catch(ex => {
-            console.log('parsing ip 2 failed', ex)
-          })
-      })
-  }
-  processLoc(json) {
-    let city = json.city
-    let lat = json.lat
-    let lon = json.lon
-    let country = json.country
-    this.setState({
-      city,
-      country,
-      lat, 
-      lon
-    })
-    console.log('location: '+city)
-    this.calcTimes()
   }
   calcTimes() {
       let coordinates = new adhan.Coordinates(this.state.lat, this.state.lon)
@@ -239,7 +208,6 @@ class Layl extends Component {
       })
   }
   componentDidMount() {
-    this.locationApi()
   }
   componentDidUpdate() {
   }
@@ -265,7 +233,8 @@ class Layl extends Component {
         <Info />
       </div>
       )
-    } else {
+    } 
+    else {
       return (
       <div>
         <Table 
