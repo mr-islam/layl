@@ -9,7 +9,12 @@ dayjs.extend(customParseFormat)
 
 function LocationButton (props) {
   return (
-    <a className="locButton" onClick={props.geolocate}>Wrong location?</a>
+    <button className="locButton" onClick={props.geolocate}>Calculate for My Location</button>
+  )
+}
+function LocationUpdate (props) {
+  return (
+    <a onClick={props.geoLocate}>Update Location</a>
   )
 }
 
@@ -42,9 +47,10 @@ function Table (props) {
     return (
       <div className='layl-container'>
         <img src={logo} alt="Logo"/>
-        <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
-          fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
-        <Location city={props.city} country={props.country} />
+        <p>As salamu alaykum 👋</p>
+        <p>Calculating prayer times depends on where you are – please share your location 
+          to find out the divisions of the night!
+        </p>
         <LocationButton geolocate={props.geolocate}/>
       </div>
     )
@@ -55,6 +61,7 @@ function Table (props) {
         <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
           fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
         <Location city={props.city} country={props.country} />
+        <LocationUpdate geolocate={props.geolocate}/>
       </div>
     )
   }

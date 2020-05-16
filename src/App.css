@@ -72,6 +72,12 @@ a:hover, a:focus {
 }
 .locButton {
   font-size: 0.85em;
+  background-color: #FF6767;
+  color: white;
+  border: none;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 4px;
 }
 ul {
 	position: relative;
