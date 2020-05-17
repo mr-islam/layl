@@ -5,6 +5,9 @@ import './App.css'
 import Info from './Info.jsx'
 import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+import "react-loader-spinner/dist/loader/css/react-spinner-loader.css"
+import Loader from 'react-loader-spinner'
+
 dayjs.extend(customParseFormat)
 
 
@@ -147,6 +150,13 @@ class Layl extends Component {
       <div>
         <div style={{textAlign: "center"}}>
          <p className="loading">Loading…</p>
+         <Loader
+         type="RevolvingDot"
+         color="#FF6767"
+         height={100}
+         width={100}
+         timeout={10000} //3 secs
+          />
         </div>
         
         <Info />
