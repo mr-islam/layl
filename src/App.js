@@ -7,14 +7,16 @@ import dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat)
 
-function LocationButton (props) {
+
+
+function LocationButtonBig (props) {
   return (
-    <button className="locButton" onClick={props.geolocate}>Calculate for My Location</button>
+    <button className="buttonBig" onClick={props.geolocate}>Calculate for My Location</button>
   )
 }
-function LocationUpdate (props) {
+function LocationButtonSmall (props) {
   return (
-    <a onClick={props.geoLocate}>Update Location</a>
+    <button className="buttonSmall" onClick={props.geolocate}>Update Location</button>
   )
 }
 
@@ -51,7 +53,7 @@ function Table (props) {
         <p>Calculating prayer times depends on where you are – please share your location 
           to find out the divisions of the night!
         </p>
-        <LocationButton geolocate={props.geolocate}/>
+        <LocationButtonBig geolocate={props.geolocate}/>
       </div>
     )
   } else {
@@ -61,7 +63,7 @@ function Table (props) {
         <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
           fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
         <Location city={props.city} country={props.country} />
-        <LocationUpdate geolocate={props.geolocate}/>
+        <LocationButtonSmall geolocate={props.geolocate}/>
       </div>
     )
   }

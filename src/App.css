@@ -70,14 +70,32 @@ a:hover, a:focus {
   color: #000;
   text-decoration: none;
 }
-.locButton {
-  font-size: 0.85em;
+.buttonBig {
   background-color: #FF6767;
   color: white;
   border: none;
   padding: 10px;
   margin: 5px;
   border-radius: 4px;
+}
+.buttonSmall {
+  margin: 5px;
+  background-color: transparent;
+  font-size: 0.85em;
+  text-decoration: underline solid #FF6767;
+  color: #000; /* #67B6FF*/
+  border-radius: 4px;
+  transition-property: background;
+  transition-property: all;
+  transition-duration: 0.2s;
+  cursor: pointer;
+  outline: none;
+  border: none;
+}
+.buttonSmall:hover, .buttonSmall:focus {
+  background-color: rgba(255, 103, 103, 0.13);
+  color: #000;
+  text-decoration: none;
 }
 ul {
 	position: relative;
