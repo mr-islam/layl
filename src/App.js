@@ -83,11 +83,16 @@ class Layl extends Component {
     if ("geolocation" in navigator) {
       this.setState({loading: true})
       navigator.geolocation.getCurrentPosition((position) => {
-        console.log(position.coords.latitude, position.coords.longitude);
+        let lat = position.coords.latitude
+        let lon = position.coords.longitude
+        console.log(lat, lon);
         this.setState({
-          lat: position.coords.latitude,
-          lon: position.coords.longitude,
+          lat,
+          lon
         })
+        localStorage.setItem('lat', lat)
+        localStorage.setItem('lon', lon)
+        console.log(`localstorage works: ${localStorage.getItem('lat')}`)
         this.calcTimes()
         let geo = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${this.state.lat}%2C${this.state.lon}%2C150&mode=retrieveAddresses&gen=9&app_id=oye7XL09Prx5G64NrSE8&app_code=-Dw2OYlGw40jZwCC_UGvKg`
         fetch(geo).then(response => response.json())
@@ -142,6 +147,7 @@ class Layl extends Component {
       })
   }
   componentDidMount() {
+
   }
   componentDidUpdate() {
   }
