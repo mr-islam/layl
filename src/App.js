@@ -26,7 +26,8 @@ function LocationButtonSmall (props) {
 function Location (props) {
   return (
     <div style={{textAlign: "center"}}>
-      <p><em>You are in {props.city}, {props.country}</em></p>
+      <p><em>{props.city}, {props.country}</em></p>
+      <p>{dayjs(props.today).format("D MMM")} – {dayjs(props.tomorrow).format("D MMM")}</p>
     </div>
   )
 }
@@ -53,7 +54,7 @@ function Table (props) {
         <img src={logo} alt="Logo"/>
         <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
           fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
-        <Location city={props.city} country={props.country} />
+        <Location city={props.city} country={props.country} today={props.today} tomorrow={props.tomorrow} />
         <LocationButtonSmall geolocate={props.geolocate}/>
       </div>
     )
@@ -192,6 +193,7 @@ class Layl extends Component {
         fajr={this.state.fajr}
         geolocate={this.geolocate}
         reversed={this.state.reversed}
+        today={this.state.today} tomorrow={this.state.tomorrow}
         />
         <Info />
       </div>
