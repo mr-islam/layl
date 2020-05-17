@@ -206,7 +206,6 @@ class Layl extends Component {
       this.setState({
         today,
         tomorrow,
-        loading: false,
         maghrib: times[0].format(timeFormat),
         twoSixth: times[1].format(timeFormat),
         threeSixth: times[2].format(timeFormat),
