@@ -45,18 +45,6 @@ function Times (props) {
 }
 
 function Table (props) {
-  if (!props.reversed) {
-    return (
-      <div className='layl-container'>
-        <img src={logo} alt="Logo"/>
-        <p>As salamu alaykum 👋</p>
-        <p>Calculating prayer times depends on where you are – please share your location 
-          to find out the divisions of the night!
-        </p>
-        <LocationButtonBig geolocate={props.geolocate}/>
-      </div>
-    )
-  } else {
     return (
       <div className='layl-container'>
         <img src={logo} alt="Logo"/>
@@ -66,7 +54,6 @@ function Table (props) {
         <LocationButtonSmall geolocate={props.geolocate}/>
       </div>
     )
-  }
 }
 
 function Info () { 
@@ -226,22 +213,23 @@ class Layl extends Component {
         <div style={{textAlign: "center"}}>
          <p className="loading">Loading…</p>
         </div>
-        <Table 
-        twoSixth={this.state.twoSixth}
-        threeSixth={this.state.threeSixth}
-        fourSixth={this.state.fourSixth}
-        fiveSixth={this.state.fiveSixth}
-        sixSixth={this.state.sixSixth}
-        city={this.state.city}
-        country={this.state.country}
-        maghrib={this.state.maghrib}
-        fajr={this.state.fajr}
-        reversed={this.state.reversed}
-        />
+        
         <Info />
       </div>
       )
     } 
+    if (!this.state.reversed) {
+      return (
+        <div className='layl-container'>
+          <img src={logo} alt="Logo"/>
+          <p>As salamu alaykum 👋</p>
+          <p>Calculating prayer times depends on where you are – please share your location 
+            to find out the divisions of the night!
+          </p>
+          <LocationButtonBig geolocate={this.geolocate}/>
+      </div>
+      )
+    }
     else {
       return (
       <div>
