@@ -177,7 +177,7 @@ class Layl extends Component {
           })
       })
     } else {
-      /* geolocation IS NOT available */
+      alert("I'm very sorry, but it looks like this web browser does not support GPS… can you please come back again with an updated browser 😌?");
     }
   }
   calcTimes() {
