@@ -17,11 +17,6 @@ function LocationButtonBig (props) {
     <button className="buttonBig" onClick={props.geolocate}>Calculate for My Location</button>
   )
 }
-function LocationButtonSmall (props) {
-  return (
-    <button className="buttonSmall" onClick={props.geolocate}>Update Location</button>
-  )
-}
 
 function Location (props) {
   return (
@@ -55,7 +50,6 @@ function Table (props) {
         <Times maghrib={props.maghrib} twoSixth={props.twoSixth} threeSixth={props.threeSixth} 
           fourSixth={props.fourSixth} fiveSixth={props.fiveSixth} sixSixth={props.sixSixth} fajr={props.fajr}/>
         <Location city={props.city} country={props.country} today={props.today} tomorrow={props.tomorrow} />
-        <LocationButtonSmall geolocate={props.geolocate}/>
       </div>
     )
 }
