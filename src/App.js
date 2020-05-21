@@ -63,7 +63,7 @@ class Layl extends Component {
     this.state = {
       city: localStorage.getItem('city') || null,
       country: localStorage.getItem('country') || null,
-      loading: false,
+      loading: true,
       times: null,
       today: null,
       tomorrow: null,
@@ -81,7 +81,6 @@ class Layl extends Component {
   }
   componentDidMount() {
     if (this.state.lat && this.state.lon) {
-      this.setState({loading: true})
       this.firstUserHandler()
     } else {
       console.log("waiting for first time user permission")
@@ -110,7 +109,7 @@ class Layl extends Component {
             let country = location.Country
             this.setState({
               city,
-              country,
+              country
             })
             localStorage.setItem('city', city)
             localStorage.setItem('country', country)
@@ -169,7 +168,7 @@ class Layl extends Component {
         fiveSixth: times[4].format(timeFormat),
         sixSixth: times[5].format(timeFormat),
         fajr: times[6].format(timeFormat),
-        loading: false
+        loading: false,
         lat, lon
       })
   }
