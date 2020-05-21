@@ -6,7 +6,6 @@
   "dependencies": {
     "adhan": "^3.0.0",
     "dayjs": "^1.8.13",
-    "jsonp": "^0.2.1",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-github-btn": "^1.0.5",
