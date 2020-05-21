@@ -131,11 +131,21 @@ class Layl extends Component {
     }
   }
   calcTimes() {
-      let coordinates = new adhan.Coordinates(this.state.lat, this.state.lon)
-      let today = new Date()
-      let tomorrow = new Date()
-      tomorrow.setDate(today.getDate()+1)
       var params = adhan.CalculationMethod.MoonsightingCommittee()
+      let coordinates = new adhan.Coordinates(this.state.lat, this.state.lon)
+      var todayRef = new Date()
+      var today = new Date()
+      let prayerTimesTodayTest = new adhan.PrayerTimes(coordinates, today, params)
+      let fajrToday = dayjs(prayerTimesTodayTest.fajr)
+      if (dayjs().isBefore(fajrToday)) { //so islamic night is respected and relevant times are shown
+        console.log("before fajr, displaying 'yesterday's' time")
+        today.setDate(todayRef.getDate()-1)
+        var tomorrow = new Date()
+      } else {
+        var tomorrow = new Date()
+        tomorrow.setDate(todayRef.getDate()+1)
+      }
+      
       let prayerTimesToday = new adhan.PrayerTimes(coordinates, today, params)
       let prayerTimesTomorrow = new adhan.PrayerTimes(coordinates, tomorrow, params)
       console.log(prayerTimesTomorrow)
