@@ -76,10 +76,8 @@ class Layl extends Component {
     this.firstUserHandler = this.firstUserHandler.bind(this)
   }
   firstUserHandler() {
-    this.setState({loading: true}, () =>
-      this.geolocate()
-    )
-    
+    this.setState({loading: true})
+    this.geolocate()
   }
   componentDidMount() {
     if (this.state.lat && this.state.lon) {
