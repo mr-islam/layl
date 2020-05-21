@@ -67,29 +67,32 @@ class Layl extends Component {
       tomorrow: null,
       fajr: null,
       maghrib: null,
-      lat: localStorage.getItem('lat') || null,
-      lon: localStorage.getItem('lon') || null,
+      lat: parseInt(localStorage.getItem('lat')) || null,
+      lon: parseInt(localStorage.getItem('lon')) || null,
     }
+    this.navigateCoods = this.navigateCoods.bind(this)
     this.geolocate = this.geolocate.bind(this)
     this.firstUserHandler = this.firstUserHandler.bind(this)
   }
   firstUserHandler() {
     this.setState({loading: true})
-    this.geolocate()
+    this.navigateCoods()
     this.calcTimes()
+    this.setState({loading: false})
   }
   componentDidMount() {
     if (this.state.lat && this.state.lon) {
       this.setState({loading: true})
-      this.geolocate()
+      this.navigateCoods()
       this.calcTimes()
+      this.setState({loading: false})
     } else {
       console.log("waiting for first time user permission")
     }
   }
   componentDidUpdate() {
   }
-  geolocate() {
+  navigateCoods() {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
         let lat = position.coords.latitude
@@ -99,10 +102,22 @@ class Layl extends Component {
           lat,
           lon
         })
-        localStorage.setItem('lat', this.state.lat)
-        localStorage.setItem('lon', this.state.lon)
-        console.log(`localstorage works: ${localStorage.getItem('lat')}`)
-
+        if (Math.abs(this.state.lat - parseInt(localStorage.getItem('lat'))) > 0.5  
+        || Math.abs(this.state.lon - parseInt(localStorage.getItem('lon'))) > 0.5 ) {
+          //since this is a significantly new location, save it as a fresh location
+          localStorage.setItem('lat', this.state.lat)
+          localStorage.setItem('lon', this.state.lon)
+          console.log(`localstorage works: ${localStorage.getItem('lat')}`)
+          this.geolocate()
+        } else {
+        }
+        this.calcTimes()
+        
+      })} else {
+        alert("I'm very sorry, but it looks like this web browser does not support GPS… can you please come back again with an updated browser 😌?");
+      }
+  }
+  geolocate() {
         let geo = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${this.state.lat}%2C${this.state.lon}%2C150&mode=retrieveAddresses&gen=9&app_id=oye7XL09Prx5G64NrSE8&app_code=-Dw2OYlGw40jZwCC_UGvKg`
         fetch(geo).then(response => response.json())
           .then(result => {
@@ -122,12 +137,8 @@ class Layl extends Component {
               city: null,
               country: null,
             })
-            alert(`I am very sorry: Layl cannot connect to GPS provider. Please email me (navedcoded@gmail.com) with this error code: ${err}. `)
+            alert(`I am very sorry: Layl cannot connect to city name provider. Please email me (navedcoded@gmail.com) with this error code: ${err}. `)
           })
-      })
-    } else {
-      alert("I'm very sorry, but it looks like this web browser does not support GPS… can you please come back again with an updated browser 😌?");
-    }
   }
   calcTimes() {
       let coordinates = new adhan.Coordinates(this.state.lat, this.state.lon)
@@ -162,7 +173,6 @@ class Layl extends Component {
         fiveSixth: times[4].format(timeFormat),
         sixSixth: times[5].format(timeFormat),
         fajr: times[6].format(timeFormat),
-        loading: false
       })
   }
   render() {
