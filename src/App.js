@@ -59,17 +59,16 @@ class Layl extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      city: "",
-      country: "",
+      city: localStorage.getItem('city') || null,
+      country: localStorage.getItem('country') || null,
       loading: false,
       times: null,
       today: null,
       tomorrow: null,
       fajr: null,
       maghrib: null,
-      lat: null,
-      lon: null,
-      reversed: false,
+      lat: localStorage.getItem('lat') || null,
+      lon: localStorage.getItem('lon') || null,
     }
     this.geolocate = this.geolocate.bind(this)
     this.firstUserHandler = this.firstUserHandler.bind(this)
@@ -80,10 +79,18 @@ class Layl extends Component {
     this.calcTimes()
   }
   componentDidMount() {
+    if (this.state.lat && this.state.lon) {
+      this.setState({loading: true})
+      this.geolocate()
+      this.calcTimes()
+    } else {
+      console.log("waiting for first time user permission")
+    }
+  }
+  componentDidUpdate() {
   }
   geolocate() {
     if ("geolocation" in navigator) {
-      this.setState({loading: true})
       navigator.geolocation.getCurrentPosition((position) => {
         let lat = position.coords.latitude
         let lon = position.coords.longitude
@@ -92,21 +99,30 @@ class Layl extends Component {
           lat,
           lon
         })
-        localStorage.setItem('lat', lat)
-        localStorage.setItem('lon', lon)
+        localStorage.setItem('lat', this.state.lat)
+        localStorage.setItem('lon', this.state.lon)
         console.log(`localstorage works: ${localStorage.getItem('lat')}`)
-        this.calcTimes()
+
         let geo = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${this.state.lat}%2C${this.state.lon}%2C150&mode=retrieveAddresses&gen=9&app_id=oye7XL09Prx5G64NrSE8&app_code=-Dw2OYlGw40jZwCC_UGvKg`
         fetch(geo).then(response => response.json())
           .then(result => {
             let location = result.Response.View[0].Result[0].Location.Address
             console.dir(location)
+            let city = location.City
+            let country = location.Country
             this.setState({
-              city: location.City,
-              country: location.Country,
-              reversed: true,
-              loading: false
+              city,
+              country,
             })
+            localStorage.setItem('city', city)
+            localStorage.setItem('country', country)
+          })
+          .catch(err => {
+            this.setState({
+              city: null,
+              country: null,
+            })
+            alert(`I am very sorry: Layl cannot connect to GPS provider. Please email me (navedcoded@gmail.com) with this error code: ${err}. `)
           })
       })
     } else {
@@ -146,12 +162,8 @@ class Layl extends Component {
         fiveSixth: times[4].format(timeFormat),
         sixSixth: times[5].format(timeFormat),
         fajr: times[6].format(timeFormat),
+        loading: false
       })
-  }
-  componentDidMount() {
-
-  }
-  componentDidUpdate() {
   }
   render() {
     if (this.state.loading) {
@@ -172,15 +184,17 @@ class Layl extends Component {
       </div>
       )
     } 
-    if (!this.state.reversed) {
+    if (!localStorage.getItem('lat') && !localStorage.getItem('lon')) {
       return (
         <div className='layl-container'>
           <img src={logo} alt="Logo"/>
           <p>As salamu alaykum 👋</p>
-          <p>Calculating prayer times depends on where you are – please share your location 
-            to find out the divisions of the night!
+          <p>Welcome to Layl 🌙</p>
+          <p>Calculating prayer times depends on where you are – please give us permission 
+            to check your location, and find out the divisions of the night for you!
           </p>
-          <LocationButtonBig geolocate={this.geolocate}/>
+          <LocationButtonBig geolocate={this.firstUserHandler}/>
+          <p>On future visits, Layl will remember your location and work directly </p>
           <Info />
 
       </div>
@@ -200,7 +214,6 @@ class Layl extends Component {
         maghrib={this.state.maghrib}
         fajr={this.state.fajr}
         geolocate={this.geolocate}
-        reversed={this.state.reversed}
         today={this.state.today} tomorrow={this.state.tomorrow}
         />
         <Info />
