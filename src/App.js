@@ -122,8 +122,8 @@ class Layl extends Component {
           })
           .catch(err => {
             this.setState({
-              city: null,
-              country: null,
+              city: "Not found",
+              country: "",
             })
             alert(`I am very sorry: Layl cannot connect to GPS provider. Please email me (navedcoded@gmail.com) with this error code: ${err}. `)
           })
