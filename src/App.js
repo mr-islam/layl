@@ -14,7 +14,9 @@ dayjs.extend(customParseFormat)
 
 function LocationButtonBig (props) {
   return (
-    <button className="buttonBig" onClick={props.geolocate}>Calculate for My Location</button>
+    <div>
+      <button className="buttonBig" onClick={props.geolocate}>Calculate for My Location</button>
+    </div>
   )
 }
 
