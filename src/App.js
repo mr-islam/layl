@@ -82,7 +82,7 @@ class Layl extends Component {
   componentDidMount() {
     if (this.state.lat && this.state.lon) {
       this.setState({loading: true})
-      this.geolocate()
+      this.firstUserHandler()
     } else {
       console.log("waiting for first time user permission")
     }
@@ -95,18 +95,13 @@ class Layl extends Component {
         let lat = position.coords.latitude
         let lon = position.coords.longitude
         console.log(lat, lon);
-        this.setState({
-          lat,
-          lon
-        }, () => {
-          localStorage.setItem('lat', this.state.lat)
-          localStorage.setItem('lon', this.state.lon)
-          console.log(`localstorage works: ${localStorage.getItem('lat')}`)
-          this.calcTimes() 
-        })
+        localStorage.setItem('lat', lat)
+        localStorage.setItem('lon', lon)
+        console.log(`localstorage works: ${localStorage.getItem('lat')}`)
+        this.calcTimes(lat, lon) 
         
 
-        let geo = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${this.state.lat}%2C${this.state.lon}%2C150&mode=retrieveAddresses&gen=9&app_id=oye7XL09Prx5G64NrSE8&app_code=-Dw2OYlGw40jZwCC_UGvKg`
+        let geo = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${lat}%2C${lon}%2C150&mode=retrieveAddresses&gen=9&app_id=oye7XL09Prx5G64NrSE8&app_code=-Dw2OYlGw40jZwCC_UGvKg`
         fetch(geo).then(response => response.json())
           .then(result => {
             let location = result.Response.View[0].Result[0].Location.Address
@@ -132,9 +127,9 @@ class Layl extends Component {
       alert("I'm very sorry, but it looks like this web browser does not support GPS… can you please come back again with an updated browser 😌?");
     }
   }
-  calcTimes() {
+  calcTimes(lat, lon) {
       var params = adhan.CalculationMethod.MoonsightingCommittee()
-      let coordinates = new adhan.Coordinates(this.state.lat, this.state.lon)
+      let coordinates = new adhan.Coordinates(lat, lon)
       var todayRef = new Date()
       var today = new Date()
       let prayerTimesTodayTest = new adhan.PrayerTimes(coordinates, today, params)
@@ -166,8 +161,7 @@ class Layl extends Component {
       console.log(times)
       let timeFormat = "h:mm a"
       this.setState({
-        today,
-        tomorrow,
+        today, tomorrow,
         maghrib: times[0].format(timeFormat),
         twoSixth: times[1].format(timeFormat),
         threeSixth: times[2].format(timeFormat),
@@ -176,6 +170,7 @@ class Layl extends Component {
         sixSixth: times[5].format(timeFormat),
         fajr: times[6].format(timeFormat),
         loading: false
+        lat, lon
       })
   }
   render() {
