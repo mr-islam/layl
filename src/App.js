@@ -72,6 +72,14 @@ class Layl extends Component {
       reversed: false,
     }
     this.geolocate = this.geolocate.bind(this)
+    this.firstUserHandler = this.firstUserHandler.bind(this)
+  }
+  firstUserHandler() {
+    this.setState({loading: true})
+    this.geolocate()
+    this.calcTimes()
+  }
+  componentDidMount() {
   }
   geolocate() {
     if ("geolocation" in navigator) {
