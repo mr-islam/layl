@@ -67,8 +67,8 @@ class Layl extends Component {
       tomorrow: null,
       fajr: null,
       maghrib: null,
-      lat: localStorage.getItem('lat') || null,
-      lon: localStorage.getItem('lon') || null,
+      lat: parseInt(localStorage.getItem('lat')) || null,
+      lon: parseInt(localStorage.getItem('lon')) || null,
     }
     this.geolocate = this.geolocate.bind(this)
     this.firstUserHandler = this.firstUserHandler.bind(this)
@@ -76,13 +76,11 @@ class Layl extends Component {
   firstUserHandler() {
     this.setState({loading: true})
     this.geolocate()
-    this.calcTimes()
   }
   componentDidMount() {
     if (this.state.lat && this.state.lon) {
       this.setState({loading: true})
       this.geolocate()
-      this.calcTimes()
     } else {
       console.log("waiting for first time user permission")
     }
@@ -98,10 +96,13 @@ class Layl extends Component {
         this.setState({
           lat,
           lon
+        }, () => {
+          localStorage.setItem('lat', this.state.lat)
+          localStorage.setItem('lon', this.state.lon)
+          console.log(`localstorage works: ${localStorage.getItem('lat')}`)
+          this.calcTimes() 
         })
-        localStorage.setItem('lat', this.state.lat)
-        localStorage.setItem('lon', this.state.lon)
-        console.log(`localstorage works: ${localStorage.getItem('lat')}`)
+        
 
         let geo = `https://reverse.geocoder.api.here.com/6.2/reversegeocode.json?prox=${this.state.lat}%2C${this.state.lon}%2C150&mode=retrieveAddresses&gen=9&app_id=oye7XL09Prx5G64NrSE8&app_code=-Dw2OYlGw40jZwCC_UGvKg`
         fetch(geo).then(response => response.json())
